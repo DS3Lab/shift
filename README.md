@@ -8,7 +8,7 @@ We apply several optimisations to SHiFT, including proxy classifiers, successive
 
 ## Project Structure
 
-SHiFT consists of three main components:
+SHiFT consists of the following main components:
 
 * **SHiFT-QL**: SHiFT-QL is a query language specifically designed for searching machine learning models. Under `shiftql/repl`, we provide a REPL (Read Eval Print Loop) for SHiFT-QL. Users can type in a query and get the results. An example of SHiFT-QL is shown below:
 
