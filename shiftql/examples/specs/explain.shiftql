@@ -1,0 +1,5 @@
+declare target_readers as select * from readers;
+
+declare my_models as select * from text_models where source="TensorFlow";
+
+explain select * from my_models order by sum(err) ASC trained on "glue/cola-test" tested on benchmark target_readers classified by ["Euclidean NN"] wait;

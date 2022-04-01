@@ -1,0 +1,7 @@
+declare ft_model as select * from image_models where source="TensorFlow" AND not finetuned limit 2;
+print ft_model;
+
+declare ft_reader as select * from readers where name="vtab-cifar-train";
+print ft_reader;
+
+finetune ft_model with ft_reader;

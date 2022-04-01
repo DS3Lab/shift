@@ -1,0 +1,1 @@
+explain select all from text_models where source="TensorFlow" or source="HuggingFace Transformers" ORDER BY err ASC trained on "glue/sst2:2.0.0-train" tested on task "glue/sst2:2.0.0-val" classified by ["Cosine NN"] wait;

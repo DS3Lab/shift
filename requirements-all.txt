@@ -1,0 +1,16 @@
+pydantic
+celery
+uvicorn
+loguru
+psycopg2-binary
+scikit-learn
+transformers
+tensorflow-hub
+datasets
+tensorflow-addons
+tensorflow-datasets
+rich
+redis
+pottery
+fastapi
+tensorflow

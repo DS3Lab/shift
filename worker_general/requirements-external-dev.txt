@@ -1,0 +1,5 @@
+-r requirements-external.txt
+tensorflow-cpu==2.4.1
+torch==1.7.1+cpu
+torchvision==0.8.2+cpu
+faiss-cpu==1.7.0

@@ -1,0 +1,12 @@
+celery==4.4.7
+pydantic==1.8.1
+numpy==1.19.5
+tensorflow_hub==0.11.0
+tfds-nightly==4.2.0.dev202103160106
+opencv-python-headless==4.5.1.48
+datasets==1.2.1
+torchaudio==0.7.2
+redis==3.5.3
+transformers==4.3.2
+tokenizers==0.10.1
+scikit-learn==0.24.1

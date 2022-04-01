@@ -1,0 +1,5 @@
+declare target_readers as select * from readers where name="glue/sst2:1.0.0-test" OR name="glue/sst2:1.0.0-train" OR name="glue/cola-test" OR name="glue/cola-train";
+
+declare my_models as select * from text_models where source="TensorFlow";
+
+select * from my_models order by avg(err) ASC trained on "glue/cola-train" tested on benchmark target_readers classified by ["Euclidean NN"];

@@ -1,0 +1,1 @@
+REGISTER dataset "usps/" ("tf_dataset_name", "split", "embed_feature_path", "label_feature_path") VALUES ("glue/cola:1.0.0", "train", ["sentence"], ["label"]);

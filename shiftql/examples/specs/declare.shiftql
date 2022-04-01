@@ -1,0 +1,2 @@
+DECLARE my_models AS select all from image_models where source='torchvision';
+DECLARE my_readers AS select all from readers where name='glue/sst2:1.0.0-test';

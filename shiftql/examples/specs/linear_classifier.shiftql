@@ -1,0 +1,1 @@
+select all from text_models where source="TensorFlow" ORDER BY err ASC trained on "glue/sst2:1.0.0-train" tested on task "glue/sst2:1.0.0-test" classified by ["Linear"];

@@ -1,0 +1,9 @@
+declare my_readers AS select * from readers where name="cifar10-train" OR name="cifar10-test" OR name="cifar100-train" OR name="cifar100-test";
+
+declare my_probe AS select * from image_models where torchvision_name="ResNet18" AND source="torchvision";
+
+select vec from my_readers where probe=my_probe;
+
+# declare benchmark_reader as select * from readers where name="cifar10-train";
+
+# select * from image_models where source="torchvision" ORDER BY err ASC trained on "cifar10-train" tested on task benchmark_reader classified by ["Cosine NN"] limit 1;

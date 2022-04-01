@@ -1,0 +1,2 @@
+USE 127.0.0.1:8001;
+explain select all from image_models where source="vtab" or source="TensorFlow" ORDER BY err ASC trained on "vtab-cdp-train" tested on task "vtab-cdp-val" classified by ["Euclidean NN"] chunk 64 budget 160 wait;

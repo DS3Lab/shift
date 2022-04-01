@@ -1,0 +1,3 @@
+declare my_models as select * from image_models where source="TensorFlow";
+
+explain json select * from my_models order by err ASC trained on "vtab-cifar-train" tested on "vtab-cifar-val" classified by ["Euclidean NN"] wait;

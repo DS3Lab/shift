@@ -1,0 +1,6 @@
+{
+  "restructuredtext.confPath": "${workspaceFolder}/doc/source",
+  "restructuredtext.languageServer.disabled": true,
+  "python.formatting.provider": "autopep8",
+  "esbonio.sphinx.confDir": "${workspaceFolder}/doc/source"
+}

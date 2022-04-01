@@ -1,0 +1,1 @@
+explain select * from text_models where source="HuggingFace Transformers" or source="TensorFlow" ORDER BY err ASC trained on "imdb-train" tested on task "imdb-test" classified by ["Euclidean NN"] chunk 1024 budget 4096;

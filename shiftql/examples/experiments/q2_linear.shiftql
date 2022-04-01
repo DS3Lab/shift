@@ -1,0 +1,3 @@
+# select all from image_models where source="vtab" or source="TensorFlow" ORDER BY err ASC trained on "vtab-cifar-train" tested on task "vtab-cifar-val" classified by ["Linear"] wait;
+
+# select all from image_models where source="vtab" or source="TensorFlow" ORDER BY err ASC trained on "vtab-pc-train" tested on task "vtab-pc-val" classified by ["Linear"] wait;

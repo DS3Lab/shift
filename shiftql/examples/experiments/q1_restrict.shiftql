@@ -1,0 +1,2 @@
+select * from image_models where source='vtab';
+select * from image_models where source='vtab' or source='TensorFlow';

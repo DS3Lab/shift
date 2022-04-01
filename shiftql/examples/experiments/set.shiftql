@@ -1,0 +1,3 @@
+declare my_model as select * from image_models where source="vtab" ORDER BY num_params DESC limit 1;
+
+select * from image_models where source="vtab" ORDER BY err ASC trained on "vtab-eurosat-train" tested on task "vtab-eurosat-val" classified by ["Euclidean NN"] limit 1 other than my_model wait;

@@ -1,0 +1,2 @@
+select all from readers where name="glue/sst2:1.0.0-train";
+SELECT all FROM text_models where source="TensorFlow";

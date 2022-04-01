@@ -1,0 +1,4 @@
+select all from image_models where source='torchvision' order by torchvision_name;
+select all from image_models where source='torchvision' order by torchvision_name DESC;
+select all from image_models where source='TensorFlow' order by tf_image_model_url ASC;
+select all from image_models where source='TensorFlow' order by tf_image_model_url DESC;
