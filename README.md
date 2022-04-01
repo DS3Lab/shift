@@ -6,6 +6,8 @@ In a transfer learning scenario, an important task for data scientists is to fin
 
 We apply several optimisations to SHiFT, including proxy classifiers, successive halving and incremental execution. With all these optimisations, we show that we can be 20 times faster than fine-tuning all the models in the pool.
 
+![](https://raw.githubusercontent.com/DS3Lab/shift/main/doc/arch.png)
+
 ## Project Structure
 
 SHiFT consists of the following main components:
