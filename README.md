@@ -32,6 +32,8 @@ ORDER BY UpstreamAccuracy DESC LIMIT 1
 
 * **Database Utilities**: All operations related to database accesses are under `common/db_tools/`.
 
+* **Successive Halving Simulator**: We have implemented a simulator for running successive halving with some parameters, including the chunk size, budget, cost of models, etc. The simulator can be found at `simulator/`.
+
 ## How a SHiFT-QL Statement is Processed
 
 * **Parse**: The SHiFT-QL statement is first parsed into a query tree at the client-side, which is similar to the query tree in database systems. 
@@ -44,6 +46,3 @@ ORDER BY UpstreamAccuracy DESC LIMIT 1
   * An inference task for the training dataset.
   * An inference task for the testing dataset.
   * A classification task predicting the labels of the testing dataset.
-
-## Techniques and Optimisations
-
