@@ -1,5 +1,7 @@
 # SHiFT: An Efficient, Flexible Search Engine for Transfer Learning
 
+This repository contains the artifacts (code and supplementary material) for the submission ``SHiFT: An Efficient, Flexible Search Engine for Transfer Learning''. The additional details for replicating the results can be accessed via (this pdf)[https://github.com/DS3Lab/shift/blob/main/shift_supplementary.pdf].
+
 ## Overview
 
 In a transfer learning scenario, an important task for data scientists is to find the best model for a new dataset. Users will have to train, evaluate and tune tons of models to pick the best one, which can be tedious, time-consuming and a waste of resources. To tackle this problem, we proposed SHiFT, with an envision for helping search machine learning models. With SHiFT, users are enabled to type in a structured query along with the dataset and a pool of models, and SHiFT returns the top-ranked models that match the query.
