@@ -1,6 +1,6 @@
 # SHiFT: An Efficient, Flexible Search Engine for Transfer Learning
 
-This repository contains the artifacts (code and supplementary material) for the submission ``SHiFT: An Efficient, Flexible Search Engine for Transfer Learning''. The additional details for replicating the results can be accessed via (this pdf)[https://github.com/DS3Lab/shift/blob/main/shift_supplementary.pdf].
+This repository contains the artifacts (code and supplementary material) for the submission ``SHiFT: An Efficient, Flexible Search Engine for Transfer Learning''. The additional details for replicating the results can be accessed via https://github.com/DS3Lab/shift/blob/main/shift_supplementary.pdf.
 
 ## Overview
 
