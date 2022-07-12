@@ -56,9 +56,9 @@ class Secrets(BaseSettings):
     postgres_password: str
 
     class Config:
-        env_file = "py-dev.env"
+        env_file = ".env"
         env_file_encoding = "utf-8"
-        # secrets_dir = "/run/secrets"
+        secrets_dir = "/run/secrets"
 
 
 if __name__ == "__main__":

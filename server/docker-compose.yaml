@@ -1,0 +1,62 @@
+version: "3.7"
+
+services:
+  redis:
+    build:
+      context: redis_db
+      dockerfile: Dockerfile
+    volumes:
+      - type: volume
+        source: redis
+        target: /data
+    ports:
+      - "63791:6379"
+
+  postgres:
+    build:
+      context: postgres_db
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+    volumes:
+      - type: volume
+        source: postgres
+        target: /var/lib/postgresql/data2
+    secrets:
+      - postgres_password
+    ports:
+      - "54321:5432"
+
+  scheduler:
+    build:
+      context: .
+      dockerfile: scheduler/Dockerfile
+    env_file:
+      - .env
+    # Signal handling when using multiple entrypoint commands: https://twitter.com/Docker/status/628788890472681472
+    # Wait for databases: https://docs.docker.com/compose/startup-order/
+    entrypoint:
+      [
+        "/bin/bash",
+        "-c",
+        "dockerize -wait tcp://${POSTGRES_HOST}:${POSTGRES_PORT} -wait tcp://${REDIS_HOST}:${REDIS_PORT} && exec python main.py",
+      ]
+    depends_on:
+      - redis
+      - postgres
+    secrets:
+      - postgres_password
+
+volumes:
+  postgres:
+  redis:
+
+# https://docs.docker.com/engine/swarm/secrets/#use-secrets-in-compose
+secrets:
+  postgres_password:
+    file: postgres_db/postgres_password.txt
+
+networks:
+  default:
+    external:
+      name: shift

@@ -1,4 +1,4 @@
-FROM python:3.6-slim
+FROM python:3.10-slim
 
 # Add user
 # https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
@@ -10,8 +10,9 @@ RUN pip install --no-cache-dir --upgrade pip
 # g++ needed in order to install pottery via pip, wget for dockerize
 # See: https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/
 # for details about this command
+# libpq-dev is needed for postgres
 RUN apt-get update \
-    && apt-get -y install --no-install-recommends g++ wget \
+    && apt-get -y install --no-install-recommends g++ wget libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Install dockerize
@@ -34,6 +35,9 @@ RUN pip install --no-cache-dir -e schemas
 # Redis library
 COPY common/db_tools ./db_tools
 RUN pip install --no-cache-dir -e db_tools
+
+COPY common/optimizations ./optimizations
+RUN pip install --no-cache-dir -e optimizations
 
 # Copy code after installing libraries - makes rebuilds faster
 COPY scheduler ./scheduler

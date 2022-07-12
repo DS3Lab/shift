@@ -27,7 +27,6 @@ from schemas.response import LinearResult, NearestNeighborResult, StatusResponse
 
 from ._devices import DeviceID, DeviceManager
 
-logger.add("scheduler.log")
 _logger = logging.getLogger(__name__)
 
 # Following two classes store information about running inference and classifier jobs, respectively. At runtime there is one object per unique request (those that have the same hash). This way, the same request is not executed multiple times. IDs of equivalent requests are stored in 'ids'.

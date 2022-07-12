@@ -1,4 +1,4 @@
-FROM postgres:13.2-alpine
+FROM postgres:14.4-alpine
 
 # https://hub.docker.com/_/postgres
 # Initialization scripts run only if no database exists yet

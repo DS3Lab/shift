@@ -7,7 +7,7 @@ __pycache__
 .coverage
 htmlcov
 .myenv
-postgres_db/postgres_password.txt
+postgres_password.txt
 docker-compose.yml
 shiftql/parsetab.py
 py-dev.env
@@ -21,3 +21,4 @@ worker-nodocker.env
 .trunk
 local-dev.env
 results/
+.env
