@@ -203,6 +203,11 @@ class BaseDBInterface(ABC):
         raise NotImplementedError
 
     @abstractmethod
+    def populate_tasks_database(self):
+        """Populates tasks database with predefined tasks."""
+        raise NotImplementedError
+
+    @abstractmethod
     def register_image_model(self, request: ImageModelRegistrationRequest):
         """Stores an image model together with information about it in the database.
 
@@ -353,7 +358,9 @@ class JobsDB(BaseDBInterface, JobsDBInterface):
                     for model, info in text_model_configs
                 ],
             )
-
+    def populate_tasks_database(self):
+        pass
+    
     def register_image_model(self, request: ImageModelRegistrationRequest):
         model = request.full_config
         info = request.info

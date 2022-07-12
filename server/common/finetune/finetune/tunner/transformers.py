@@ -2,7 +2,7 @@ import os
 from typing import List
 
 import datasets
-from schemas.models.text_model import HFModelConfig
+from schemas.models.text_model import HFTextModelConfig
 from schemas.requests.reader import HFReaderConfig
 from transformers import (
     AutoModelForSequenceClassification,
@@ -19,7 +19,7 @@ class HFFinetuner:
 
     def finetune(
         self,
-        model: HFModelConfig,
+        model: HFTextModelConfig,
         finetune_readers: List[HFReaderConfig],
         num_labels: int = 2,
         learning_rate: float = 0.01,

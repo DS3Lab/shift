@@ -81,18 +81,10 @@ class ProxyModelConfig(BaseModel, ABC):
     def full_config(self) -> FullModelConfig:
         raise NotImplementedError
 
-
 _optional_tf2_output_key_field = Field(
     None,
     title="Output key (optional for TF1 models, should not be set for TF2 models)",
     description="Output key that will cause the TF1 model to output an alternative "
-    "representation, which might have more than 1 dimension",
-)
-
-_optional_tf1_output_key_field = Field(
-    None,
-    title="Output key",
-    description="Output key that will cause the model to output an alternative "
     "representation, which might have more than 1 dimension",
 )
 

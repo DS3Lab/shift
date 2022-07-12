@@ -299,4 +299,5 @@ def purge_request():
 
 
 if __name__ == "__main__":
-    jobs_db.populate_model_databases()
+    logging.info("Populating...")
+    # jobs_db.populate_model_databases()

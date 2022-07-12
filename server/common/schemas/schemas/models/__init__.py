@@ -9,8 +9,8 @@ from schemas.models.image_model import (
     ImageModelInfo,
     ImageNoOpModelConfig,
     ReshapeModelConfig,
-    TF1FullImageModelConfig,
     TFFullImageModelConfig,
+    HFImageModelConfig,
 )
 from schemas.models.image_predefined import (
     PredefinedTorchvisionModelName,
@@ -20,12 +20,11 @@ from schemas.models.image_predefined import (
     get_all_torchvision_model_configs,
 )
 from schemas.models.text_model import (
-    HFModelConfig,
+    HFTextModelConfig,
     TextFullModelConfig,
     TextKerasLayerConfig,
     TextModelInfo,
     TextNoOpModelConfig,
-    TF1FullTextModelConfig,
     TFFullTextModelConfig,
 )
 from schemas.models.text_predefined import (
@@ -34,20 +33,19 @@ from schemas.models.text_predefined import (
 )
 
 ImageFullModelConfigsU = Union[
+    HFImageModelConfig,
     ImageKerasLayerConfig,
     ImageNoOpModelConfig,
     ReshapeModelConfig,
-    TF1FullImageModelConfig,
     TFFullImageModelConfig,
     TorchvisionFullModelConfig,
     FinetunedTFFullImageModelConfig,
 ]
 
 TextFullModelConfigsU = Union[
-    HFModelConfig,
+    HFTextModelConfig,
     TextKerasLayerConfig,
     TextNoOpModelConfig,
-    TF1FullTextModelConfig,
     TFFullTextModelConfig,
 ]
 

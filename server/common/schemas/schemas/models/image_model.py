@@ -7,10 +7,8 @@ from schemas.models.common import (
     FullModelConfig,
     ModelInfo,
     Source,
-    TargetEnvironment,
     _layer_path_field,
 )
-
 
 class ImageSize(BaseModel):
     height: int = Field(
@@ -78,13 +76,6 @@ _optional_tf2_output_key_field = Field(
     None,
     title="Output key (optional for TF1 models, should not be set for TF2 models)",
     description="Output key that will cause the TF1 model to output an alternative "
-    "representation, which might have more than 1 dimension",
-)
-
-_optional_tf1_output_key_field = Field(
-    None,
-    title="Output key",
-    description="Output key that will cause the model to output an alternative "
     "representation, which might have more than 1 dimension",
 )
 
@@ -183,22 +174,18 @@ class ImageKerasLayerConfig(ImageFullModelConfig):
         title = "Image Keras Layer"
 
 
-class TF1FullImageModelConfig(ImageFullModelConfig):
-    tf1_image_model_url: HttpUrl = Field(
+class HFImageModelConfig(ImageFullModelConfig):
+    hf_name: str = Field(
         ...,
-        title="TensorFlow URL",
-        description="TensorFlow URL that points to a TF1 image model",
-        example="https://tfhub.dev/google/imagenet/inception_v3/feature_vector/3",
+        title="Image Model Identifier",
+        description="Huggingface Image Model Identifier",
+        example="google/vit-base-patch16-224",
     )
-    output_key: Optional[str] = _optional_tf1_output_key_field
+    required_image_size: ImageSize = _image_resize_field
 
     @property
     def _source(self) -> Source:
-        return Source.TENSORFLOW
-
-    @property
-    def target_environment(self) -> TargetEnvironment:
-        return TargetEnvironment.TF_1
+        return Source.HUGGINGFACE_TRANSFORMERS
 
     class Config(_DefaultConfig):
-        title = "TensorFlow 1 (TF1 Hub) Image model"
+        title = "Huggingface Image Model"

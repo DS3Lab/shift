@@ -11,7 +11,7 @@ class TorchvisionModel(Model):
     """Runs inference with a torchvision model.
 
     Args:
-        config (HFModelConfig): Model configuration.
+        config (TorchvisionFullModelConfig): Model configuration.
         device (Device): Device used for the inference.
     """
 

@@ -3,7 +3,7 @@ from pipeline.model import Model, ModelFactory
 from schemas.models import (  # PCAModelConfig,
     FinetunedTFFullImageModelConfig,
     FullModelConfig,
-    HFModelConfig,
+    HFTextModelConfig,
     ImageKerasLayerConfig,
     ImageNoOpModelConfig,
     ReshapeModelConfig,
@@ -13,8 +13,9 @@ from schemas.models import (  # PCAModelConfig,
     TFFullTextModelConfig,
     TorchvisionFullModelConfig,
 )
+from schemas.models.image_model import HFImageModelConfig
 
-from ._huggingface import HFModel
+from ._huggingface import HFTextModel, HFImageModel
 from ._keras_layer import ImageKerasLayer, TextKerasLayer
 
 # from ._pca import PCAModel
@@ -27,8 +28,11 @@ class AllModelFactory(ModelFactory):
     @staticmethod
     def get_model(config: FullModelConfig, device: Device) -> Model:
         # Proxy configs cannot be passed -> not handled
-        if isinstance(config, HFModelConfig):
-            return HFModel(config, device)
+        if isinstance(config, HFTextModelConfig):
+            return HFTextModel(config, device)
+        
+        if isinstance(config, HFImageModelConfig):
+            return HFImageModel(config, device)
 
         if isinstance(config, ImageKerasLayerConfig):
             return ImageKerasLayer(config, device)

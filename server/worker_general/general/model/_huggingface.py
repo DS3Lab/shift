@@ -2,10 +2,11 @@ import numpy as np
 import torch as pt
 from pipeline import DataType, Device
 from pipeline.model import Model, PreprocessingSpecs
-from schemas.models.text_model import HFModelConfig
-from transformers import AutoModel
+from schemas.models.text_model import HFTextModelConfig
+from schemas.models.image_model import HFImageModelConfig
+from transformers import AutoModel, AutoFeatureExtractor
 
-from .preprocessing import HFPreprocessing
+from .preprocessing import HFPreprocessing, ImageCropResize3Channels
 
 
 # Inspired by: https://discuss.pytorch.org/t/select-data-through-a-mask/45598/4
@@ -53,16 +54,17 @@ def _get_mean_of_relevant_tokens(
     return pt.div(pt.sum(batch_w_irrelevant_set_to_zero, dim=1), count_relevant_tokens)
 
 
-class HFModel(Model):
-    """Runs inference with a HuggingFace model.
+class HFTextModel(Model):
+    """Runs inference with a HuggingFace text model.
 
     Args:
-        config (HFModelConfig): Model configuration.
+        config (HFTextModelConfig): Model configuration.
         device (Device): Device used for the inference.
     """
 
-    def __init__(self, config: HFModelConfig, device: Device):
-        self._device = pt.device("cuda:0") if device == Device.GPU else pt.device("cpu")
+    def __init__(self, config: HFTextModelConfig, device: Device):
+        self._device = pt.device(
+            "cuda:0") if device == Device.GPU else pt.device("cpu")
 
         # Prepare model
         # Not a problem if downloaded from two processes, one simply waits
@@ -91,7 +93,8 @@ class HFModel(Model):
         return DataType.TEXT
 
     def apply_embedding(self, features: np.ndarray) -> np.ndarray:
-        features_pt = pt.as_tensor(features, dtype=pt.int64, device=self._device)
+        features_pt = pt.as_tensor(
+            features, dtype=pt.int64, device=self._device)
         input_ids = features_pt[:, 0, :]
         attention_mask = features_pt[:, 1, :]
         token_type_ids = features_pt[:, 2, :]
@@ -118,3 +121,39 @@ class HFModel(Model):
             )
 
         return result_pt.cpu().numpy()
+
+
+class HFImageModel(Model):
+    """
+    Runs inference with a HuggingFace Image Model.
+    Args:
+        config (HFImageModelConfig): Model configuration.
+        device (Device): Device used for the inference
+    """
+
+    def __init__(self, config: HFImageModelConfig, device: Device) -> None:
+        self._device = pt.device(
+            "cuda:0") if device == Device.GPU else pt.device("cpu")
+        model = AutoFeatureExtractor.from_pretrained(config.hf_name)
+        model.eval()
+        model.to(self._device)
+        self._model = model
+        self._name = config.hf_name
+        self._required_image_size = config.required_image_size
+
+    @property
+    def data_type(self) -> DataType:
+        return DataType.IMAGE
+
+    def get_preprocessing_specs(self) -> PreprocessingSpecs:
+        return ImageCropResize3Channels(self._required_image_size, normalize=True)
+
+    def apply_embedding(self, features: np.ndarray) -> np.ndarray:
+        # Swap dimensions from (batch x H x W x C) to (batch x C x H x W)
+        features_pt = pt.as_tensor(
+            features.transpose((0, 3, 1, 2)), dtype=pt.float32, device=self._device
+        )
+        with pt.no_grad():
+            result = self._model(features_pt, return_tensors='pt')
+        self._result = result.cpu().numpy()
+        return self._result

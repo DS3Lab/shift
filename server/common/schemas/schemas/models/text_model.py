@@ -9,9 +9,7 @@ from schemas.models.common import (
     FullModelConfig,
     ModelInfo,
     Source,
-    TargetEnvironment,
     _layer_path_field,
-    _optional_tf1_output_key_field,
     _optional_tf2_output_key_field,
 )
 from typing_extensions import Literal
@@ -93,29 +91,7 @@ class TextKerasLayerConfig(TextFullModelConfig):
     class Config(_DefaultConfig):
         title = "Text Keras Layer"
 
-
-class TF1FullTextModelConfig(TextFullModelConfig):
-    tf1_text_model_url: HttpUrl = Field(
-        ...,
-        title="TensorFlow URL",
-        description="TensorFlow URL that points to a TF1 text model",
-        example="https://tfhub.dev/google/elmo/3",
-    )
-    output_key: Optional[str] = _optional_tf1_output_key_field
-
-    @property
-    def _source(self) -> Source:
-        return Source.TENSORFLOW
-
-    @property
-    def target_environment(self) -> TargetEnvironment:
-        return TargetEnvironment.TF_1
-
-    class Config(_DefaultConfig):
-        title = "TensorFlow 1 (TF1 Hub) Text Model"
-
-
-class HFModelConfig(TextFullModelConfig):
+class HFTextModelConfig(TextFullModelConfig):
     hf_name: Literal[
         "bert-base-cased",
         "bert-base-uncased",

@@ -1,4 +1,4 @@
-FROM python:3.6-slim
+FROM python:3.10-slim
 
 # Add user
 # https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
@@ -11,7 +11,7 @@ RUN pip install --no-cache-dir --upgrade pip
 # See: https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/
 # for details about this command
 RUN apt-get update \
-    && apt-get -y install --no-install-recommends g++ wget \
+    && apt-get -y install --no-install-recommends g++ wget libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Install dockerize

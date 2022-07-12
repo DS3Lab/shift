@@ -2,5 +2,23 @@
   "restructuredtext.confPath": "${workspaceFolder}/doc/source",
   "restructuredtext.languageServer.disabled": true,
   "python.formatting.provider": "autopep8",
-  "esbonio.sphinx.confDir": "${workspaceFolder}/doc/source"
+  "esbonio.sphinx.confDir": "${workspaceFolder}/doc/source",
+  "python.analysis.extraPaths": [
+    "server/common/schemas",
+    "server/common/db_tools",
+    "server/common/pipeline",
+    "server/common/optimizations",
+    "server/common/task2vec",
+    "server/common/telemetry",
+    "server/common/finetune",
+  ],
+  "python.autoComplete.extraPaths": [
+    "server/common/schemas",
+    "server/common/db_tools",
+    "server/common/pipeline",
+    "server/common/optimizations",
+    "server/common/task2vec",
+    "server/common/telemetry",
+    "server/common/finetune",
+  ],
 }

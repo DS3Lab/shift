@@ -4,7 +4,7 @@ import pytest
 from pydantic.error_wrappers import ValidationError
 from schemas.common import DateRange, IntegerRange
 from schemas.models import (
-    HFModelConfig,
+    HFTextModelConfig,
     ImageModelInfo,
     TextModelInfo,
     TextNoOpModelConfig,
@@ -56,14 +56,14 @@ def test_text_noop_model_config():
 
 def test_hf_model_config_validation_pooled_output():
     # BERT supports pooled output
-    bert = HFModelConfig(hf_name="bert-base-cased", max_length=10, pooled_output=True)
+    bert = HFTextModelConfig(hf_name="bert-base-cased", max_length=10, pooled_output=True)
 
     # Cannot alter 'hf_name' into invalid state
     with pytest.raises(ValidationError):
         bert.hf_name = "xlnet-base-cased"
 
     # XLNet supports mean (=not using pooled output)
-    xlnet = HFModelConfig(
+    xlnet = HFTextModelConfig(
         hf_name="xlnet-base-cased", max_length=10, pooled_output=False
     )
 
@@ -73,7 +73,7 @@ def test_hf_model_config_validation_pooled_output():
 
     # XLNet does not support pooled output
     with pytest.raises(ValidationError):
-        _ = HFModelConfig(hf_name="xlnet-base-cased", max_length=10, pooled_output=True)
+        _ = HFTextModelConfig(hf_name="xlnet-base-cased", max_length=10, pooled_output=True)
 
 
 def test_torchvision_internal_configs():

@@ -6,7 +6,7 @@ from finetune.tunner.vtab import VTabFinetuner
 from loguru import logger
 from pipeline.reader import ReaderFactory
 from schemas.models.common import ImageFullModelConfig
-from schemas.models.text_model import HFModelConfig, TextFullModelConfig
+from schemas.models.text_model import HFTextModelConfig, TextFullModelConfig
 from schemas.requests.reader import AllReaderConfigsU, VTABReaderConfig
 
 
@@ -30,7 +30,7 @@ class FinetuneApp:
         logger.info("Finetunning with lr={}, epochs={}".format(learning_rate, epochs))
         if len(readers) > 1:
             raise ValueError("Multiple Readers not supported yet!")
-        if isinstance(model, HFModelConfig):
+        if isinstance(model, HFTextModelConfig):
             hf_finetuner = HFFinetuner()
             hf_finetuner.finetune(
                 model=model,
