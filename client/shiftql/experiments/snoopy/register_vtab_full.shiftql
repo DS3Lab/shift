@@ -1,0 +1,75 @@
+REGISTER dataset "vtab-caltech101-train" ("vtab_name", "split", "size") VALUES ("Caltech101", "train800", 800);
+
+REGISTER dataset "vtab-caltech101-val" ("vtab_name", "split", "size") VALUES ("Caltech101", "val200", 200);
+
+REGISTER dataset "vtab-cifar-train" ("vtab_name", "split", "size") VALUES ("CIFAR-100", "train800", 800);
+
+REGISTER dataset "vtab-cifar-val" ("vtab_name", "split", "size") VALUES ("CIFAR-100", "val200", 200);
+
+REGISTER dataset "vtab-cdp-train" ("vtab_name", "split", "size") VALUES ("CLEVR distance prediction", "train800", 800);
+
+REGISTER dataset "vtab-cdp-val" ("vtab_name", "split", "size") VALUES ("CLEVR distance prediction", "val200", 200);
+
+REGISTER dataset "vtab-clevr-train" ("vtab_name", "split", "size") VALUES ("CLEVR counting", "train800", 800);
+
+REGISTER dataset "vtab-clevr-val" ("vtab_name", "split", "size") VALUES ("CLEVR counting", "val200", 200);
+
+REGISTER dataset "vtab-diabet-train" ("vtab_name", "split", "size") VALUES ("Diabetic Rethinopathy", "train800", 800);
+
+REGISTER dataset "vtab-diabet-val" ("vtab_name", "split", "size") VALUES ("Diabetic Rethinopathy", "val200", 200);
+
+REGISTER dataset "vtab-dmlab-train" ("vtab_name", "split", "size") VALUES ("Dmlab Frames", "train800", 800);
+
+REGISTER dataset "vtab-dmlab-val" ("vtab_name", "split", "size") VALUES ("Dmlab Frames", "val200", 200);
+
+REGISTER dataset "vtab-dop-train" ("vtab_name", "split", "size") VALUES ("dSprites orientation prediction", "train800", 800);
+
+REGISTER dataset "vtab-dop-val" ("vtab_name", "split", "size") VALUES ("dSprites orientation prediction", "val200", 200);
+
+REGISTER dataset "vtab-dlp-train" ("vtab_name", "split", "size") VALUES ("dSprites location prediction", "train800", 800);
+
+REGISTER dataset "vtab-dlp-val" ("vtab_name", "split", "size") VALUES ("dSprites location prediction", "val200", 200);
+
+REGISTER dataset "vtab-dtd-train" ("vtab_name", "split", "size") VALUES ("Describable Textures Dataset (DTD)", "train800", 800);
+
+REGISTER dataset "vtab-dtd-val" ("vtab_name", "split", "size") VALUES ("Describable Textures Dataset (DTD)", "val200", 200);
+
+REGISTER dataset "vtab-eurosat-train" ("vtab_name", "split", "size") VALUES ("EuroSAT", "train800", 800);
+
+REGISTER dataset "vtab-eurosat-val" ("vtab_name", "split", "size") VALUES ("EuroSAT", "val200", 200);
+
+REGISTER dataset "vtab-kdp-train" ("vtab_name", "split", "size") VALUES ("KITTI distance prediction", "train800", 800);
+
+REGISTER dataset "vtab-kdp-val" ("vtab_name", "split", "size") VALUES ("KITTI distance prediction", "val200", 200);
+
+REGISTER dataset "vtab-flowers-train" ("vtab_name", "split", "size") VALUES ("102 Category Flower Dataset", "train800", 800);
+
+REGISTER dataset "vtab-flowers-val" ("vtab_name", "split", "size") VALUES ("102 Category Flower Dataset", "val200", 200);
+
+REGISTER dataset "vtab-pet-train" ("vtab_name", "split", "size") VALUES ("Oxford IIIT Pet dataset", "train800", 800);
+
+REGISTER dataset "vtab-pet-val" ("vtab_name", "split", "size") VALUES ("Oxford IIIT Pet dataset", "val200", 200);
+
+REGISTER dataset "vtab-pc-train" ("vtab_name", "split", "size") VALUES ("PatchCamelyon", "train800", 800);
+
+REGISTER dataset "vtab-pc-val" ("vtab_name", "split", "size") VALUES ("PatchCamelyon", "val200", 200);
+
+REGISTER dataset "vtab-resisc-train" ("vtab_name", "split", "size") VALUES ("Resisc45", "train800", 800);
+
+REGISTER dataset "vtab-resisc-val" ("vtab_name", "split", "size") VALUES ("Resisc45", "val200", 200);
+
+REGISTER dataset "vtab-sna-train" ("vtab_name", "split", "size") VALUES ("Small NORB azimuth prediction", "train800", 800);
+
+REGISTER dataset "vtab-sna-val" ("vtab_name", "split", "size") VALUES ("Small NORB azimuth prediction", "val200", 200);
+
+REGISTER dataset "vtab-snb-train" ("vtab_name", "split", "size") VALUES ("Small NORB elevation prediction", "train800", 800);
+
+REGISTER dataset "vtab-snb-val" ("vtab_name", "split", "size") VALUES ("Small NORB elevation prediction", "val200", 800);
+
+REGISTER dataset "vtab-sun-train" ("vtab_name", "split", "size") VALUES ("SUN397", "train800", 200);
+
+REGISTER dataset "vtab-sun-val" ("vtab_name", "split", "size") VALUES ("SUN397", "val200", 200);
+
+REGISTER dataset "vtab-svhn-train" ("vtab_name", "split", "size") VALUES ("SVHN", "train800", 800);
+
+REGISTER dataset "vtab-svhn-val" ("vtab_name", "split", "size") VALUES ("SVHN", "val200", 200);

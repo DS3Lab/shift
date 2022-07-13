@@ -52,7 +52,7 @@ class Printable(object):
             )
         )
         print("{} remaining task(s) left.".format(self.response["remaining_tasks"]))
-        send_explain(self.response["stmt"], self.response["total_execution_time"])
+        # send_explain(self.response["stmt"], self.response["total_execution_time"])
 
     def print_task2vec_matrix(self):
         num_remaining_tasks = self.response["remaining_tasks"]
