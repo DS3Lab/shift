@@ -1,5 +1,5 @@
 from ._factory import AllModelFactory
-from ._huggingface import HFModel
+from ._huggingface import HFTextModel, HFImageModel
 from ._keras_layer import ImageKerasLayer, TextKerasLayer
 
 # from ._pca import PCAModel
@@ -9,7 +9,8 @@ from ._torchvision import TorchvisionModel
 
 __all__ = [
     "AllModelFactory",
-    "HFModel",
+    "HFTextModel",
+    "HFImageModel",
     "ImageKerasLayer",
     "ImageNoOpModel",
     # "PCAModel",

@@ -80,15 +80,15 @@ def run_classifier(
                 settings=request.classifier.parameters,
             )
         stop = timeit.default_timer()
-        add_event(
-            'classifier',
-            {
-                'classifier': request.classifier.name,
-                'device': "GPU" if device_id is not None else "CPU",
-                'hash': request.hash
-            },
-            round(1000 * (stop - start))
-        )
+        # add_event(
+        #     'classifier',
+        #     {
+        #         'classifier': request.classifier.name,
+        #         'device': "GPU" if device_id is not None else "CPU",
+        #         'hash': request.hash
+        #     },
+        #     round(1000 * (stop - start))
+        # )
         return {key: result[key].json() for key in result}
 
     except Exception as e:

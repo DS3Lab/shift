@@ -6,5 +6,5 @@ def add_event(event_type, event_data, elapsed):
         "event_type": event_type,
         "event_data": event_data,
         "elapsed_time": elapsed,
-    },
+    }
     return data
