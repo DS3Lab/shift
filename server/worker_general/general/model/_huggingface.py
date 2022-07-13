@@ -159,10 +159,7 @@ class HFImageModel(Model):
                 features_pt,
                 output_hidden_states=True
             )
-        logger.info(result.keys())
-        logger.info("Shape of last_hidden_state: {}".format(result.last_hidden_state.shape))
         hidden_states = result.last_hidden_state[:, 0, :]
         hidden_states = hidden_states.squeeze()
         self._result = hidden_states.cpu().numpy()
-        logger.info(f"result shape: {self._result.shape}")
         return self._result 
