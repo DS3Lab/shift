@@ -224,8 +224,6 @@ class Runner:
         )
         self._reset_reload()
 
-        
-
     def _start_successive_halving_job(self):
         _logger.debug("Starting Successive Halving")
         any_request_ready = not self._hyperband_queue.empty()
@@ -847,7 +845,7 @@ class Runner:
             if not self._no_sleep:
                 sleep(2)
             # We put the hyperband job in another thread for some reasons:
-            # 1. Workers may not have access to the redis queue, which is required for hyperband job.
+            # 1. Workers do not have access to the redis queue, which is required for hyperband job.
             # 2. We need to continue to process other jobs, otherwise, even though hyperband requests has created new jobs, it won't be processed.
             # 3. It is essentially only about checking status, so it is fine to not put it into computationally-heavily workers.
             self._start_successive_halving_job()

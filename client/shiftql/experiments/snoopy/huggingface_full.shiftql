@@ -10,7 +10,7 @@
 
 # explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-flowers-train" tested on task "full-flowers-val" classified by ["Euclidean NN"] wait;
 
-explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-diabet-train" tested on task "full-diabet-val" classified by ["Euclidean NN"] wait;
+# explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-diabet-train" tested on task "full-diabet-val" classified by ["Euclidean NN"] wait;
 
 explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-dop-train" tested on task "full-dop-val" classified by ["Euclidean NN"] wait;
 

@@ -23,4 +23,3 @@ for idx, row in df.iterrows():
         "finetuned": False
     }
     res = requests.post('http://localhost:8001/register_image_model/', json=json_req)
-    print(res.text)
