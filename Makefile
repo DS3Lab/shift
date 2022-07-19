@@ -23,3 +23,6 @@ test:
 
 flower:
 	celery flower --broker=redis://127.0.0.1:63791 --address=127.0.0.1 
+
+doc:
+	

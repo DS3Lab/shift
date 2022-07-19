@@ -32,8 +32,3 @@ PostgreSQL
 ~~~~~~~~~~
 .. automodule:: common.db_tools.db_tools.postgres
 
-.. _Schemas:
-
-Schemas
--------
-Please visit `API Documentation <http://localhost:8000/redoc>`__.

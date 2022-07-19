@@ -3,19 +3,6 @@ SHIFT-QL
 
    The Query Language for Transfer Learning
 
-
-.. mermaid::
-
-   graph TD
-      A1[File] --> B(Command Line)
-      A[REPL] -->B(Parser)
-      B --> C{Check Syntax}
-      C -->|Use| D[Set Environment]
-      C -->|Select| E[Perform Query]
-      C -->|Others| F[Error]
-      E --> G[Executor]
-      G --> H[Format and Output]
-
 Specifications
 --------------
 
