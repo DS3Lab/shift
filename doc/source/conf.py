@@ -85,8 +85,8 @@ autodoc_member_order = "bysource"
 source_suffix = ['.rst', '.md']
 
 # sphinx-autodoc-typehints
-# set_type_checking_flag = True
-# always_document_param_types = True
+set_type_checking_flag = True
+always_document_param_types = True
 
 # intersphinx_mapping = {
 #     "worker_general": (

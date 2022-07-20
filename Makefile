@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-include server/envs/.env
+include server/.env
 
 start:
 	cd server && docker-compose up
@@ -24,5 +24,8 @@ test:
 flower:
 	celery flower --broker=redis://127.0.0.1:63791 --address=127.0.0.1 
 
-doc:
-	
+docs:
+	sphinx-autobuild doc/source doc/build
+
+docs_release:
+	sphinx-build -aEW doc/source doc/build

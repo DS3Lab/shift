@@ -1,3 +1,2 @@
-# Adding Search Strategies
+# ```Rank by```: Extensions of SHiFT
 
-New search strategies 
