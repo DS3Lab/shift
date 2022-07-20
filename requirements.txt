@@ -17,3 +17,4 @@ tensorflow
 dstool
 sphinx
 myst_parser
+furo
