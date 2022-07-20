@@ -1,3 +1,0 @@
-[submodule "mtt_distillation"]
-	path = server/userspace/extensions/src/mtt-distillation
-	url = git://github.com/shiftml/ext_mtt-distillation.git
