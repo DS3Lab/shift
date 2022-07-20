@@ -14,11 +14,9 @@ from common.telemetry.telemetry import add_event
 
 _logger = get_task_logger(__name__)
 
-
 @celery_app.task(bind=True)
 def run_inference(task: Task, inference_request_json: str, device_id: Optional[str]):
     current_process().daemon = False
-
     try:
         import os
 
