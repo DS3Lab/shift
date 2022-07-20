@@ -1,6 +1,5 @@
 from processor.exceptions import GrammarException
 
-
 def p_expression(p):
     """expression : dml END"""
     p[0] = p[1]
@@ -15,30 +14,51 @@ def p_dml(p):
     | explain
     | finetune
     | purge
+    | rank
     """
     p[0] = p[1]
 
+def p_rank(p):
+    """rank : RANK columns FROM table where order_by trained_on tested_on rank_by limit wait"""
+    p[0] = {
+        "type": p[1],
+        "column": p[2],
+        "table": p[4],
+        "where": p[5],
+        "order": p[6],
+        "trained_on": p[7],
+        "tested_on": p[8],
+        "rank_by": p[9],
+        "limit": p[10],
+        "wait": p[11],
+    }
+
+def p_rank_by(p):
+    """rank_by : BY string
+    """
+    p[0] = {"by": p[2]}
 
 def p_print(p):
     """print : PRINT string"""
     p[0] = {"type": p[1], "item": p[2]}
 
-
 def p_purge(p):
     """purge : PURGE"""
     p[0] = {"type": p[1]}
-
 
 def p_declare(p):
     """declare : DECLARE string AS select"""
     p[0] = {"type": p[1], "variable": p[2], "select": p[4]}
 
-
 def p_explain(p):
-    """explain : EXPLAIN output select"""
-    p[0] = {"type": p[1], "output": p[2], "select": p[3]}
-
-
+    """explain : EXPLAIN output select
+    | EXPLAIN output rank
+    """
+    if p[3]['type'] == 'RANK':
+        p[0] = {"type": p[1], "output": p[2], "rank": p[3]}
+    else:
+        p[0] = {"type": p[1], "output": p[2], "select": p[3]}
+    
 def p_output(p):
     """output : STRING
     | empty
@@ -50,16 +70,13 @@ def p_output(p):
     else:
         p[0] = None
 
-
 def p_register(p):
     """register : REGISTER table title columns VALUES columns"""
     p[0] = {"type": p[1], "table": p[2], "title": p[3], "columns": p[4], "values": p[6]}
 
-
 def p_title(p):
     """title : string"""
     p[0] = p[1]
-
 
 def p_use(p):
     """use : USE string"""
@@ -68,14 +85,12 @@ def p_use(p):
     else:
         p[0] = {"type": "USE", "hostname": "127.0.0.1:8001"}
 
-
 def p_string(p):
     """string : STRING
     | QSTRING
     | "*"
     """
     p[0] = p[1]
-
 
 def p_finetune(p):
     """finetune : FINETUNE ft_model WITH ft_data wait"""
@@ -86,16 +101,13 @@ def p_finetune(p):
         "wait": p[5],
     }
 
-
 def p_ft_model(p):
     """ft_model : string"""
     p[0] = p[1]
 
-
 def p_ft_data(p):
     """ft_data : string"""
     p[0] = p[1]
-
 
 def p_select(p):
     """select : SELECT columns FROM table where order_by trained_on tested_on classified_by limit other chunk budget wait"""

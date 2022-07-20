@@ -87,8 +87,7 @@ jobs_db = JobsDB(
     port=settings_.postgres_port,
 )
 
-app = FastAPI(title="shift!", description="Search Engine for Transfer Learning")
-
+app = FastAPI(title="SHiFT", description="Search Engine for Transfer Learning")
 
 @app.get(
     "/progress/{job_id}",
@@ -296,7 +295,6 @@ def purge_request():
     PID = 886580
     if PID != 0:
         os.kill(PID, signal.SIGHUP)
-
 
 if __name__ == "__main__":
     logging.info("Populating...")

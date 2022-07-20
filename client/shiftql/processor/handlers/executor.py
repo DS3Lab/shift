@@ -8,9 +8,11 @@ from common.classifier import Classifier
 from common.query import QueryTypes
 from loguru import logger
 from processor.handlers.base import QueryObject
+from processor.handlers.rank_object import RankObject
 from processor.handlers.declare_object import DeclareObject
 from processor.handlers.executors.finetune_exec import FinetuneExecutor
 from processor.handlers.executors.purge_exec import PurgeExecutor
+from processor.handlers.executors.rank_exec import RankExecutor
 from processor.handlers.post_processing.set_operators import process_other
 from processor.handlers.register_object import RegisterObject
 from processor.handlers.select_object import SelectObject
@@ -34,6 +36,8 @@ class Executor:
         self.console = Console()
         self.finetune_executor = FinetuneExecutor(self.server_url)
         self.purge_executor = PurgeExecutor(self.server_url)
+        # here we will use localhost temporarily, eventually this will be configured by the user
+        self.rank_executor = RankExecutor(self.server_url, "http://localhost:5050/")
 
     def _query(self, method, endpoint, data=None):
         return base_query(method, self.server_url + endpoint, data)
@@ -131,30 +135,34 @@ class Executor:
 
     def handle_explain(self, query_obj: QueryObject):
         logger.info("Started Explain...")
-        inner_select = SelectObject(
-            query_obj["select"], self.server_url, self.scope_vars
-        )
-        start = timeit.default_timer()
-        self.handle_query(inner_select)
-        stop = timeit.default_timer()
-        self.scope_vars["query_type"] = QueryTypes.EXPLAIN
-        self.scope_vars["response"] = {
-            "stmt": self.stmt,
-            "benchmark": inner_select.benchmark,
-            "order": inner_select.order,
-            "order_type": inner_select.order_type,
-            "total_execution_time": stop - start,
-            "remaining_tasks": self.scope_vars["remaining_tasks"],
-            "models": self.scope_vars["models"],
-            "custom_vars": self.scope_vars["custom_vars"],  # for backup only
-        }
-        if query_obj["output"]:
-            if query_obj["output"] == "JSON":
-                import json
+        if 'select' in query_obj:
+            inner_select = SelectObject(
+                query_obj["select"], self.server_url, self.scope_vars
+            )
+            start = timeit.default_timer()
+            self.handle_query(inner_select)
+            stop = timeit.default_timer()
+            self.scope_vars["query_type"] = QueryTypes.EXPLAIN
+            self.scope_vars["response"] = {
+                "stmt": self.stmt,
+                "benchmark": inner_select.benchmark,
+                "order": inner_select.order,
+                "order_type": inner_select.order_type,
+                "total_execution_time": stop - start,
+                "remaining_tasks": self.scope_vars["remaining_tasks"],
+                "models": self.scope_vars["models"],
+                "custom_vars": self.scope_vars["custom_vars"],  # for backup only
+            }
+            if query_obj["output"]:
+                if query_obj["output"] == "JSON":
+                    import json
 
-                ts = time.time()
-                with open("experiments/{}.json".format(str(ts)), "x") as fp:
-                    json.dump(self.scope_vars["response"], fp)
+                    ts = time.time()
+                    with open("experiments/{}.json".format(str(ts)), "x") as fp:
+                        json.dump(self.scope_vars["response"], fp)
+        elif 'rank' in query_obj:
+            query_obj = RankObject(query_obj['rank'], self.server_url)
+            self.rank_executor.execute(query_obj, self.scope_vars)
 
     def handle_query(self, select_obj: SelectObject):
         if select_obj.wait and select_obj.order_type == "metric":

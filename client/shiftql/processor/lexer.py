@@ -43,6 +43,8 @@ RESERVED_KEYWORDS = {
     "tested": "TESTED",
     "trained": "TRAINED",
     "classified": "CLASSIFIED",
+    "rank":"RANK",
+    "ranked": "RANKED",
     "change": "CHANGE",
     "to": "TO",
     "purge": "PURGE",
