@@ -69,7 +69,6 @@ class _FinetuneJobInfo(NamedTuple):
 
 # Parameters used by Celery to schedule the job correctly
 
-
 class RemoteJobParams(NamedTuple):
     general_inference_job_name: str
     general_classifier_job_name: str

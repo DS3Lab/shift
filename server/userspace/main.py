@@ -3,6 +3,7 @@ import inspect
 import importlib
 from typing import List, Dict
 from fastapi import FastAPI
+from loguru import logger
 
 from pydantic import BaseModel
 
@@ -38,3 +39,4 @@ async def startup_event():
         clsmembers = [x for x in clsmembers if x[0].endswith("Extension") and not x[0].startswith("ShiftExtension")]
         assert len(clsmembers) == 1, f"Found more than one extension class in {extension}"
         registry[extension] = clsmembers[0][1]
+    logger.info(f"Loaded {len(registry)} extensions: {list(registry.keys())}")
