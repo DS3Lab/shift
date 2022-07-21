@@ -28,4 +28,4 @@ docs:
 	sphinx-autobuild doc/source doc/build
 
 docs_release:
-	sphinx-build -aEW doc/source doc/build
+	sphinx-build -aE doc/source doc/build
