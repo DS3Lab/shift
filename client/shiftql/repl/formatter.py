@@ -85,7 +85,6 @@ class Printable(object):
                     num_remaining_tasks
                 )
             )
-        print(known_results)
         for each in known_results:
             json_models = []
             errs = []

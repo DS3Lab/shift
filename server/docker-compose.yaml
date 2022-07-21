@@ -47,28 +47,28 @@ services:
     secrets:
       - postgres_password
 
-  userspace:
-    build:
-      context: .
-      dockerfile: userspace/Dockerfile
-      args:
-        USERSPACE_LOCATION: ${USERSPACE_LOCATION}
-    env_file:
-      - .env
-    entrypoint:
-      [
-        "uvicorn",
-        "main:ext_app",
-        "--port",
-        "5000",
-        "--host",
-        "0.0.0.0",
-        "--workers",
-        "2",
-        "--reload",
-      ]
-    ports:
-      - "5050:5000"
+#  userspace:
+#    build:
+#      context: .
+#      dockerfile: userspace/Dockerfile
+#      args:
+#        USERSPACE_LOCATION: ${USERSPACE_LOCATION}
+#    env_file:
+#      - .env
+#    entrypoint:
+#      [
+#        "uvicorn",
+#        "main:ext_app",
+#        "--port",
+#        "5000",
+#        "--host",
+#        "0.0.0.0",
+#        "--workers",
+#        "2",
+#        "--reload",
+#      ]
+#    ports:
+#      - "5050:5000"
 
 volumes:
   postgres:

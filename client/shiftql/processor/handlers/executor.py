@@ -153,17 +153,32 @@ class Executor:
                 "models": self.scope_vars["models"],
                 "custom_vars": self.scope_vars["custom_vars"],  # for backup only
             }
-            if query_obj["output"]:
+            
+        elif 'rank' in query_obj:
+            start = timeit.default_timer()
+            inner_query_obj = RankObject(query_obj['rank'], self.server_url)
+            responses = self.rank_executor.execute(inner_query_obj, self.scope_vars)
+            stop = timeit.default_timer()
+            self.scope_vars["query_type"] = QueryTypes.EXPLAIN
+            self.scope_vars["models"] = responses
+            self.scope_vars["response"] = {
+                "order": 'ext',
+                "order_type": 'ext',
+                "benchmark": 'N/A',
+                "stmt": self.stmt,
+                "total_execution_time": stop - start,
+                "remaining_tasks": self.scope_vars["remaining_tasks"],
+                "models": responses,
+                "custom_vars": self.scope_vars["custom_vars"],  # for backup only
+            }
+        if query_obj["output"]:
                 if query_obj["output"] == "JSON":
                     import json
 
                     ts = time.time()
                     with open("experiments/{}.json".format(str(ts)), "x") as fp:
                         json.dump(self.scope_vars["response"], fp)
-        elif 'rank' in query_obj:
-            query_obj = RankObject(query_obj['rank'], self.server_url)
-            self.rank_executor.execute(query_obj, self.scope_vars)
-
+    
     def handle_query(self, select_obj: SelectObject):
         if select_obj.wait and select_obj.order_type == "metric":
             response = self.select_models(select_obj)

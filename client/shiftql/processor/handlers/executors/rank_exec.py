@@ -15,7 +15,6 @@ class RankExecutor:
         return base_query(method, self.ext_endpoint + endpoint, data=data)
 
     def execute(self, rank_obj, scope_vars):
-        print(rank_obj)
         response = self.restrict_models_pool(rank_obj)
         candidate_models = response["models"]
         results = self._query_ext("POST", f"ext/{rank_obj.by}", data={
@@ -25,7 +24,7 @@ class RankExecutor:
                 "test": rank_obj.test
             },
         })
-        return results
+        return {rank_obj.by: results}
 
     def restrict_models_pool(self, rank_obj):
         table = rank_obj.select_table
