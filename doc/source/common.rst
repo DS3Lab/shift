@@ -1,13 +1,21 @@
 Common Libraries
 ================
 
+Schemas
+--------
+.. automodule:: common.schemas.schemas
+
+Image Models
+~~~~~~~~~~~~
+.. automodule:: common.schemas.schemas.models.image_model
+
+Text Models
+~~~~~~~~~~~~
+.. automodule:: common.schemas.schemas.models.text_model
+
 Pipeline
 --------
 .. automodule:: common.pipeline.pipeline
-
-Request
-~~~~~~~
-.. automodule:: common.pipeline.pipeline.request
 
 Model
 ~~~~~
@@ -17,9 +25,6 @@ Reader
 ~~~~~~
 .. automodule:: common.pipeline.pipeline.reader
 
-IO
-~~
-.. automodule:: common.pipeline.pipeline.io
 
 DB Tools
 --------
@@ -32,3 +37,7 @@ PostgreSQL
 ~~~~~~~~~~
 .. automodule:: common.db_tools.db_tools.postgres
 
+Extensions
+-----------
+
+.. automodule:: userspace.extensions.extension
