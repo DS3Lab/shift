@@ -3,11 +3,14 @@ SHiFT
 
 Welcome to the document of the SHiFT project - the first search engine for machine learning models. 
 
-Tutorial
---------
+
+
+Getting Started
+----------------
 .. toctree::
     :maxdepth: 2
 
+    overview.md
     tutorial.rst
 
 Extending SHiFT
@@ -16,14 +19,6 @@ Extending SHiFT
     :maxdepth: 2
     
     extensions/strategies.md
-
-References
-----------
-
-.. toctree::
-    :maxdepth: 1
-
-    references.rst
 
 API Reference
 -------------
@@ -36,6 +31,13 @@ API Reference
     common.rst
     worker_general.rst
     shiftql.rst
+
+Acknowledgements
+----------------
+.. toctree::
+    :maxdepth: 2
+
+    references.rst
 
 Index
 -----
