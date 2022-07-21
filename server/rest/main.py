@@ -114,7 +114,6 @@ def progress(job_id: str, status_map: StatusMap = Depends(redis_data.get_status_
         )
     return result
 
-
 @app.post(
     "/query",
     response_model=QueryResultResponse,

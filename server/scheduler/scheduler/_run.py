@@ -76,8 +76,6 @@ class RemoteJobParams(NamedTuple):
     general_task2vec_job_name: str
     general_finetune_job_name: str
     general_queue_name: str
-    tf_1_inference_job_name: str
-    tf_1_queue_name: str
 
 
 class CeleryJobManager(ABC):
