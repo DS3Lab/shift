@@ -41,3 +41,25 @@ explain json
         tested on task "vtab-caltech101-val" 
     by "random" wait;
 ```
+
+It is also possible to request extension with parameters. For example,
+
+```sql
+explain json 
+    rank * from image_models where source='HuggingFace Transformers' ORDER BY err ASC
+        trained on "vtab-caltech101-train" 
+        tested on task "vtab-caltech101-val" 
+    by "random(seed=42, another_param=1)" wait;
+```
+
+Extensions should specify what parameters they need.
+
+## Evaluation of Search Strategies
+
+Performance of different search strategies are measured by its speed and the quality of the results. To facilitate the evaluation, SHiFT provides a simulator as an evaluation tool, together with finetune accuracy achieved on the evaluation datasets.
+
+## Limitations
+
+* Caching is not possible for now. Every time you request an extension, it will be executed again.
+* There is no task queue for extensions now.
+* Extensions will reuse the same CUDA_VISIBLE_DEVICES environment variable as the other parts.
