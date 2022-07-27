@@ -46,3 +46,8 @@ ORDER BY UpstreamAccuracy DESC LIMIT 1
   * An inference task for the training dataset.
   * An inference task for the testing dataset.
   * A classification task predicting the labels of the testing dataset.
+
+## References
+
+* [Renggli, Cedric, et al. "SHiFT: An Efficient, Flexible Search Engine for Transfer Learning." arXiv preprint arXiv:2204.01457 (2022).](https://arxiv.org/abs/2204.01457)
+* [Renggli, Cedric, et al. "Which model to transfer? finding the needle in the growing haystack." Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2022.](https://arxiv.org/abs/2010.06402)
