@@ -35,6 +35,9 @@ RUN pip install --no-cache-dir -e schemas
 COPY common/db_tools ./db_tools
 RUN pip install --no-cache-dir -e db_tools
 
+COPY common/optimizations ./optimizations
+RUN pip install --no-cache-dir -e optimizations
+
 # Copy code after installing libraries - makes rebuilds faster
 COPY rest ./rest
 

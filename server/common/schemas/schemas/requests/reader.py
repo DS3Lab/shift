@@ -264,6 +264,8 @@ class TFReaderConfig(FeaturesMixin, ReaderConfig):
 
 class VTABNames(str, Enum):
     CALTECH_101 = "Caltech101"
+    CIFAR_9 = "CIFAR-9"
+    CIFAR_10 = "CIFAR-10"
     CIFAR_100 = "CIFAR-100"
     CLEVR_DISTANCE_PREDICTION = "CLEVR distance prediction"
     CLEVR_COUNTING = "CLEVR counting"

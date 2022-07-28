@@ -245,7 +245,20 @@ class _VTABMapping:
                 ),
                 extraction_fn=self._extraction_fns.clevr_counting,
             )
-
+        if name == VTABNames.CIFAR_9:
+            return _VTABSpecs(
+                name="cifarn:3.0.3",
+                splits=_SplitsCalculator.train_test(
+                    train_size=45_000, train_percent=90
+                ),
+            )
+        if name == VTABNames.CIFAR_10:
+            return _VTABSpecs(
+                name="cifar10:3.0.2",
+                splits=_SplitsCalculator.train_test(
+                    train_size=50_000, train_percent=90
+                ),
+            )
         if name == VTABNames.DIABETIC_RETHINOPATHY:
             return _VTABSpecs(
                 name="diabetic_retinopathy_detection/btgraham-300:3.0.0",
