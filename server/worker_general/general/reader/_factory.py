@@ -28,6 +28,7 @@ class AllReaderFactory(ReaderFactory):
     ) -> Reader:
         # Order important: HFReaderConfig and ImageFolderReaderConfig subclass
         # PTReaderConfig
+        print(type(reader_config))
         if isinstance(reader_config, HFReaderConfig):
             return HFReader(reader_config, specs, batch_size)
 

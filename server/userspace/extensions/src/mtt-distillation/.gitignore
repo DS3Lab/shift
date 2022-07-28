@@ -1,0 +1,7 @@
+.idea
+logged_files
+buffer
+data
+*.pyc
+*.log
+wandb/

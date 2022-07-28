@@ -2,13 +2,37 @@ import multiprocessing
 from collections import OrderedDict
 from math import ceil, floor, log
 from typing import List
-
+import itertools
 from db_tools.postgres import JobsDB
 from loguru import logger
 
 from ._base import Arm
 from .observers import ShiftObserver
 from .processes import ArmProcess
+
+
+def get_bounds(data_size, num_models, eta=2):
+    """
+    budget: is determined by the num_models
+    we only need to ensure, at the first step, there is enough budget. i.e., r_k>=1
+    """
+    # in the first step, S_ks[0] = num_models
+    budget = num_models * ceil(log(num_models, eta))
+    """
+    chunk size is more complex: we need the total number of pulls
+    """
+    total_pulls = 0
+    S_ks = [num_models]
+    r_ks = []
+    for k in range(ceil(log(num_models, eta))):
+        r_k = floor(budget/(S_ks[k] * ceil(log(num_models, eta))))
+        r_ks.append(r_k)
+        R_k = list(itertools.accumulate(r_ks))
+        total_pulls += R_k[k]
+        S_k = ceil(S_ks[k]/eta)
+        S_ks.append(S_k)
+    chunk = ceil(data_size/total_pulls)
+    return budget, chunk
 
 
 class SuccessiveHalving:

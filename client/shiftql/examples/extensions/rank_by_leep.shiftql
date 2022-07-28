@@ -1,0 +1,1 @@
+explain json rank * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "vtab-cifar-train" tested on task "vtab-cifar-val" by "leep" wait;

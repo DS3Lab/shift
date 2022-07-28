@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.8-slim
 
 # Add user
 # https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user

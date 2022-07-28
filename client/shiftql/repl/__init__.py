@@ -14,14 +14,11 @@ rprompt = Style.from_dict(
     }
 )
 
-
 def server_toolbar(server_addr: str):
     return HTML("Connected to {}".format(server_addr))
 
-
 def get_rprompt(text):
     return text
-
 
 def process_stmts(stmts, debug):
     executor = Executor(debug)
@@ -31,7 +28,6 @@ def process_stmts(stmts, debug):
             response = executor.scope_vars["response"]
             if response_type is not None and response is not None:
                 Printable(executor.scope_vars).print()
-
 
 class REPL:
     def __init__(self, debug) -> None:
@@ -53,7 +49,7 @@ class REPL:
     def run(self):
         print()
         print("Welcome to ShiftQL")
-        print("The Awesome Search Engine for Transfer Learning")
+        print("The Search Engine for Machine Learning")
         print("ctrl-c to quit")
         print()
         try:

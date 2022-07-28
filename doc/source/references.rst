@@ -1,7 +1,7 @@
 References
 ==========
 
-This page contains links that were used during the development of the sh¡ft! system.
+This page contains links that were used during the development of the SHiFT system.
 Links that are directly referenced in the code are here omitted.
 
 General
@@ -19,3 +19,5 @@ Celery
 * `How to call Celery task by name <https://docs.celeryproject.org/en/stable/userguide/calling.html#example>`__.
 * `How to get task result <https://docs.celeryproject.org/en/latest/faq.html#how-do-i-get-the-result-of-a-task-if-i-have-the-id-that-points-there>`__.
 
+Credits
+=======

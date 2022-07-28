@@ -44,6 +44,7 @@ def process_hyperband(
     if not dry and result is None:
         hq.put(request)
     remaining_jobs = 9999
+    print(result)
     if result is not None:
         remaining_jobs = 0
         eager_results = composeResult(

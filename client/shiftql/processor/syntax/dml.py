@@ -131,6 +131,7 @@ def p_select(p):
 def p_chunk(p):
     """chunk : CHUNK NUMBER
     | empty
+    | CHUNK AUTO
     """
     if len(p) > 2:
         p[0] = p[2]
@@ -139,6 +140,7 @@ def p_chunk(p):
 def p_budget(p):
     """budget : BUDGET NUMBER
     | empty
+    | BUDGET AUTO
     """
     if len(p) > 2:
         p[0] = p[2]

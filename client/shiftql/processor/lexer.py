@@ -44,10 +44,10 @@ RESERVED_KEYWORDS = {
     "trained": "TRAINED",
     "classified": "CLASSIFIED",
     "rank":"RANK",
-    "ranked": "RANKED",
     "change": "CHANGE",
     "to": "TO",
     "purge": "PURGE",
+    "auto": "AUTO",
 }
 
 tokens = (

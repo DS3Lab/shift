@@ -1,0 +1,15 @@
+# REGISTER dataset "vtab-cifar9-train" ("vtab_name", "split", "size") VALUES ("CIFAR-9", "train800", 800);
+
+# REGISTER dataset "vtab-cifar9-val" ("vtab_name", "split", "size") VALUES ("CIFAR-9", "val200", 200);
+
+# REGISTER dataset "full-cifar9-train" ("vtab_name", "split", "size") VALUES ("CIFAR-9", "train", 45000);
+
+# REGISTER dataset "full-cifar9-val" ("vtab_name", "split", "size") VALUES ("CIFAR-9", "test", 5000);
+
+REGISTER dataset "vtab-cifar10-train" ("vtab_name", "split", "size") VALUES ("CIFAR-10", "train800", 800);
+
+REGISTER dataset "vtab-cifar10-val" ("vtab_name", "split", "size") VALUES ("CIFAR-10", "val200", 200);
+
+REGISTER dataset "full-cifar10-train" ("vtab_name", "split", "size") VALUES ("CIFAR-10", "train", 50000);
+
+REGISTER dataset "full-cifar10-val" ("vtab_name", "split", "size") VALUES ("CIFAR-10", "test", 10000);

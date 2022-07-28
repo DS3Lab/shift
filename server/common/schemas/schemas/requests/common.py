@@ -2,7 +2,7 @@ import itertools
 import math
 import os
 from collections import Counter
-from typing import Dict, List, Optional, Sequence, Tuple, Union
+from typing import Dict, List, Literal, Optional, Sequence, Tuple, Union
 
 from db_tools.query import get_reader_size
 from loguru import logger
@@ -569,12 +569,12 @@ class Request(BaseModel):
         title="Benchmark",
         description="Specify if the request is a benchmark request - if so the server will not merge test dataset",
     )
-    chunk_size: Optional[int] = Field(
+    chunk_size: Optional[Union[int, Literal['AUTO']]] = Field(
         None,
         title="Chunk Size for Hyperband Optimization",
         description="Chunk size for Hyperband optimization",
     )
-    budget: Optional[int] = Field(
+    budget: Optional[Union[int, Literal['AUTO']]] = Field(
         None,
         title="Budget for Hyperband Optimization",
         description="Budget for Hyperband optimization",

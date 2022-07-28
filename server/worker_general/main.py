@@ -28,7 +28,10 @@ def run_inference(task: Task, inference_request_json: str, device_id: Optional[s
         from pipeline import Device
         from pipeline.request import InferenceRunner
         from schemas.requests.common import InferenceRequest
-
+        # https://pytorch.org/docs/stable/notes/multiprocessing.html#cuda-in-multiprocessing
+        # import multiprocessing
+        # multiprocessing.set_start_method(method="spawn", force=True)
+        
         inference_runner = InferenceRunner(
             reader_factory=AllReaderFactory(), model_factory=AllModelFactory()
         )
