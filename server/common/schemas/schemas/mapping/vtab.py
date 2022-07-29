@@ -245,13 +245,6 @@ class _VTABMapping:
                 ),
                 extraction_fn=self._extraction_fns.clevr_counting,
             )
-        if name == VTABNames.CIFAR_9:
-            return _VTABSpecs(
-                name="cifarn:3.0.3",
-                splits=_SplitsCalculator.train_test(
-                    train_size=45_000, train_percent=90
-                ),
-            )
         if name == VTABNames.CIFAR_10:
             return _VTABSpecs(
                 name="cifar10:3.0.2",
@@ -361,7 +354,21 @@ class _VTABMapping:
                     train_size=73_257, train_percent=90
                 ),
             )
-
+        # below are customized datasets
+        if name == VTABNames.CIFAR_9:
+            return _VTABSpecs(
+                name="cifarn:3.0.3",
+                splits=_SplitsCalculator.train_test(
+                    train_size=45_000, train_percent=90
+                ),
+            )
+        if name == VTABNames.CIFAR_10Ordered:
+            return _VTABSpecs(
+                name="cifar10_ordered:1.0.0",
+                splits=_SplitsCalculator.train_test(
+                    train_size=50_000, train_percent=90
+                ),
+            )
         raise ValueError(f"Unknown key {name!r}")
 
 

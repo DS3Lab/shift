@@ -1,0 +1,2 @@
+REGISTER dataset "full-cifar10_ordered-train" ("vtab_name", "split", "size") VALUES ("CIFAR-10Ordered", "train", 50000);
+REGISTER dataset "full-cifar10_ordered-val" ("vtab_name", "split", "size") VALUES ("CIFAR-10Ordered", "test", 10000);

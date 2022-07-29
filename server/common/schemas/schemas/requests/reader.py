@@ -264,7 +264,6 @@ class TFReaderConfig(FeaturesMixin, ReaderConfig):
 
 class VTABNames(str, Enum):
     CALTECH_101 = "Caltech101"
-    CIFAR_9 = "CIFAR-9"
     CIFAR_10 = "CIFAR-10"
     CIFAR_100 = "CIFAR-100"
     CLEVR_DISTANCE_PREDICTION = "CLEVR distance prediction"
@@ -286,8 +285,10 @@ class VTABNames(str, Enum):
     #  site-packages/tensorflow_datasets/image_classification/sun397_tfds_tr.txt
     SUN397 = "SUN397"
     SVHN = "SVHN"
-
-
+    # below are customized datasets
+    CIFAR_9 = "CIFAR-9"
+    CIFAR_10Ordered = 'CIFAR-10Ordered'
+    
 class VTABSplits(str, Enum):
     TRAIN = "train"
     VAL = "val"
