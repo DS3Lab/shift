@@ -369,6 +369,13 @@ class _VTABMapping:
                     train_size=50_000, train_percent=90
                 ),
             )
+        if name == VTABNames.CIFAR_9TH:
+            return _VTABSpecs(
+                name="cifar9_th:1.0.0",
+                splits=_SplitsCalculator.train_test(
+                    train_size=5000, train_percent=90
+                ),
+            )
         raise ValueError(f"Unknown key {name!r}")
 
 

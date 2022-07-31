@@ -885,7 +885,6 @@ def slice_readers(
     changes: List[Change] = [],
 ) -> List[MutableReader]:
     """
-    Now we don't split the readers into smaller, equal-size chunks, but we determine the start and end of the reader.
     Several notes:
     1. start -> current_index
     2. end -> current_index + chunk_size * needed_num_pulls
@@ -908,10 +907,11 @@ def slice_readers(
     > In future, maybe we can set the increment as an exponent of 2, and persist it in the database?
     > Maybe we can let user define the increments?
     """
-    increments = [chunk_size]
+    increments = []
     base_size = sizes[0]
     for size in sizes:
         increments.append(math.ceil((size * chunk_size) / base_size))
+    logger.info(f"Increments: {increments}")
     sliced_readers = []
     needed_num_pulls = list(itertools.accumulate(needed_num_pulls))
     for id_reader, reader in enumerate(readers):

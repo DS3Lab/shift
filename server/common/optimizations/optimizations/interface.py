@@ -94,6 +94,7 @@ def composeResult(
         largest_training_result = None
         final_readers = None
         for pull in range(len(pulls)):
+            logger.info("Sizes: {}".format(sizes))
             readers = slice_readers(sizes, train_readers, chunk_size, current_index, needed_num_pulls=pulls[:pull+2])
             logger.info("readers: {}".format(readers))
             result = jobs_db.get_known_result_by_params(
