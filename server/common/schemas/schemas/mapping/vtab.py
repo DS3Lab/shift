@@ -224,7 +224,7 @@ class _VTABMapping:
             return _VTABSpecs(
                 name="cifar100:3.0.2",
                 splits=_SplitsCalculator.train_test(
-                    train_size=50_000, train_percent=90
+                    train_size=50_000, train_percent=100
                 ),
             )
 
@@ -249,7 +249,7 @@ class _VTABMapping:
             return _VTABSpecs(
                 name="cifar10:3.0.2",
                 splits=_SplitsCalculator.train_test(
-                    train_size=50_000, train_percent=90
+                    train_size=50_000, train_percent=100
                 ),
             )
         if name == VTABNames.DIABETIC_RETHINOPATHY:
@@ -359,42 +359,42 @@ class _VTABMapping:
             return _VTABSpecs(
                 name="cifar10_ordered:1.0.0",
                 splits=_SplitsCalculator.train_test(
-                    train_size=50_000, train_percent=90
+                    train_size=50_000, train_percent=100
                 ),
             )
         if name == VTABNames.CIFAR_9:
             return _VTABSpecs(
                 name="cifarn:3.0.3",
                 splits=_SplitsCalculator.train_test(
-                    train_size=45_000, train_percent=90
+                    train_size=45_000, train_percent=100
                 ),
             )
         if name == VTABNames.CIFAR_9TH:
             return _VTABSpecs(
                 name="cifar9_th:1.0.0",
                 splits=_SplitsCalculator.train_test(
-                    train_size=5000, train_percent=90
+                    train_size=5000, train_percent=100
                 ),
             )
         if name == VTABNames.CIFAR_10Ordered2:
             return _VTABSpecs(
                 name="cifar10_ordered2:1.0.0",
                 splits=_SplitsCalculator.train_test(
-                    train_size=50_000, train_percent=90
+                    train_size=50_000, train_percent=100
                 ),
             )
         if name == VTABNames.CIFAR_8:
             return _VTABSpecs(
                 name="cifar8:1.0.0",
                 splits=_SplitsCalculator.train_test(
-                    train_size=40_000, train_percent=90
+                    train_size=40_000, train_percent=100
                 ),
             )
         if name == VTABNames.CIFAR_8TH:
             return _VTABSpecs(
                 name="cifar8_th:1.0.0",
                 splits=_SplitsCalculator.train_test(
-                    train_size=10_000, train_percent=90
+                    train_size=10_000, train_percent=100
                 ),
             )
         
