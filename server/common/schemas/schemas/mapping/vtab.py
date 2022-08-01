@@ -355,18 +355,18 @@ class _VTABMapping:
                 ),
             )
         # below are customized datasets
-        if name == VTABNames.CIFAR_9:
-            return _VTABSpecs(
-                name="cifarn:3.0.3",
-                splits=_SplitsCalculator.train_test(
-                    train_size=45_000, train_percent=90
-                ),
-            )
         if name == VTABNames.CIFAR_10Ordered:
             return _VTABSpecs(
                 name="cifar10_ordered:1.0.0",
                 splits=_SplitsCalculator.train_test(
                     train_size=50_000, train_percent=90
+                ),
+            )
+        if name == VTABNames.CIFAR_9:
+            return _VTABSpecs(
+                name="cifarn:3.0.3",
+                splits=_SplitsCalculator.train_test(
+                    train_size=45_000, train_percent=90
                 ),
             )
         if name == VTABNames.CIFAR_9TH:
@@ -376,6 +376,28 @@ class _VTABMapping:
                     train_size=5000, train_percent=90
                 ),
             )
+        if name == VTABNames.CIFAR_10Ordered2:
+            return _VTABSpecs(
+                name="cifar10_ordered2:1.0.0",
+                splits=_SplitsCalculator.train_test(
+                    train_size=50_000, train_percent=90
+                ),
+            )
+        if name == VTABNames.CIFAR_8:
+            return _VTABSpecs(
+                name="cifar8:1.0.0",
+                splits=_SplitsCalculator.train_test(
+                    train_size=40_000, train_percent=90
+                ),
+            )
+        if name == VTABNames.CIFAR_8TH:
+            return _VTABSpecs(
+                name="cifar8_th:1.0.0",
+                splits=_SplitsCalculator.train_test(
+                    train_size=10_000, train_percent=90
+                ),
+            )
+        
         raise ValueError(f"Unknown key {name!r}")
 
 

@@ -287,8 +287,11 @@ class VTABNames(str, Enum):
     SVHN = "SVHN"
     # below are customized datasets
     CIFAR_9 = "CIFAR-9"
+    CIFAR_8 = "CIFAR-8"
     CIFAR_10Ordered = 'CIFAR-10Ordered'
+    CIFAR_10Ordered2 = 'CIFAR-10Ordered2'
     CIFAR_9TH='CIFAR-9TH'
+    CIFAR_8TH='CIFAR-8TH'
     
 class VTABSplits(str, Enum):
     TRAIN = "train"

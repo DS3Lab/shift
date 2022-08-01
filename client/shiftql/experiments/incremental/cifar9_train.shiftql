@@ -1,1 +1,0 @@
-explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-cifar9-train" tested on task "full-cifar10-val" classified by ["Euclidean NN"] chunk 101 budget 1880 wait;
