@@ -1,9 +1,13 @@
-# explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-cifar10_ordered-train" tested on task "full-cifar10-val" classified by ["Euclidean NN"] chunk 112 budget 1880 wait;
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-cifar10_ordered-train" tested on task "full-cifar10-val" classified by ["Euclidean NN"] chunk 96 budget 1880 wait;
 
-# explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on ["full-cifar9-train","full-cifar9_th-train"] tested on task "full-cifar10-val" classified by ["Euclidean NN"] chunk 112 budget 1880 wait;
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on ["full-cifar9-train","full-cifar9_th-train"] tested on task "full-cifar10-val" classified by ["Euclidean NN"] chunk 96 budget 1880 wait;
 
-# explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-cifar10_ordered2-train" tested on task "full-cifar10-val" classified by ["Euclidean NN"] chunk 112 budget 1880 wait;
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-cifar10_ordered2-train" tested on task "full-cifar10-val" classified by ["Euclidean NN"] chunk 96 budget 1880 wait;
 
-explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-cifar10_ordered2-train" tested on task "full-cifar10-val" classified by ["Euclidean NN"] chunk 112 budget 1880 wait;
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-cifar10_ordered2-train" tested on task "full-cifar10-val" classified by ["Euclidean NN"] chunk 96 budget 1880 wait;
 
-# explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on ["full-cifar8-train","full-cifar8_th-train"] tested on task "full-cifar10-val" classified by ["Euclidean NN"] chunk 112 budget 1880 wait;
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on ["full-cifar8-train","full-cifar8_th-train"] tested on task "full-cifar10-val" classified by ["Euclidean NN"] chunk 96 budget 1880 wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-cifar10_ordered3-train" tested on task "full-cifar10-val" classified by ["Euclidean NN"] chunk 96 budget 1880 wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on ["full-cifar7-train","full-cifar7_th-train"] tested on task "full-cifar10-val" classified by ["Euclidean NN"] chunk 96 budget 1880 wait;

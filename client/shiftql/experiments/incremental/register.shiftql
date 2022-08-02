@@ -3,6 +3,10 @@
 # REGISTER dataset "full-cifar9_th-train" ("vtab_name", "split", "size") VALUES ("CIFAR-9TH", "train", 5000);
 # REGISTER dataset "full-cifar9_th-val" ("vtab_name", "split", "size") VALUES ("CIFAR-9TH", "test", 1000);
 
-REGISTER dataset "full-cifar10_ordered2-train" ("vtab_name", "split", "size") VALUES ("CIFAR-10Ordered2", "train", 50000);
-REGISTER dataset "full-cifar8-train" ("vtab_name", "split", "size") VALUES ("CIFAR-8", "train", 40000);
-REGISTER dataset "full-cifar8_th-train" ("vtab_name", "split", "size") VALUES ("CIFAR-8TH", "train", 10000);
+# REGISTER dataset "full-cifar10_ordered2-train" ("vtab_name", "split", "size") VALUES ("CIFAR-10Ordered2", "train", 50000);
+# REGISTER dataset "full-cifar8-train" ("vtab_name", "split", "size") VALUES ("CIFAR-8", "train", 40000);
+# REGISTER dataset "full-cifar8_th-train" ("vtab_name", "split", "size") VALUES ("CIFAR-8TH", "train", 10000);
+
+REGISTER dataset "full-cifar10_ordered3-train" ("vtab_name", "split", "size") VALUES ("CIFAR-10Ordered3", "train", 50000);
+REGISTER dataset "full-cifar7-train" ("vtab_name", "split", "size") VALUES ("CIFAR-7", "train", 35000);
+REGISTER dataset "full-cifar7_th-train" ("vtab_name", "split", "size") VALUES ("CIFAR-7TH", "train", 15000);

@@ -397,7 +397,27 @@ class _VTABMapping:
                     train_size=10_000, train_percent=100
                 ),
             )
-        
+        if name == VTABNames.CIFAR_10Ordered3:
+            return _VTABSpecs(
+                name="cifar10_ordered3:1.0.0",
+                splits=_SplitsCalculator.train_test(
+                    train_size=50_000, train_percent=100
+                ),
+            )
+        if name == VTABNames.CIFAR_7:
+            return _VTABSpecs(
+                name="cifar7:1.0.0",
+                splits=_SplitsCalculator.train_test(
+                    train_size=35_000, train_percent=100
+                ),
+            )
+        if name == VTABNames.CIFAR_7TH:
+            return _VTABSpecs(
+                name="cifar7_th:1.0.0",
+                splits=_SplitsCalculator.train_test(
+                    train_size=15_000, train_percent=100
+                ),
+            )
         raise ValueError(f"Unknown key {name!r}")
 
 
