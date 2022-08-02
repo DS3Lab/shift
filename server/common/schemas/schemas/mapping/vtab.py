@@ -355,6 +355,32 @@ class _VTABMapping:
                 ),
             )
         # below are customized datasets
+        if name == VTABNames.CIFAR_10Splitted:
+            return _VTABSpecs(
+                name="cifar10_splitted:1.0.0",
+                splits={
+                    "train_0": "train_0[:5000]",
+                    "train_1": "train_1[:5000]",
+                    "train_2": "train_2[:5000]",
+                    "train_3": "train_3[:5000]",
+                    "train_4": "train_4[:5000]",
+                    "train_5": "train_5[:5000]",
+                    "train_6": "train_6[:5000]",
+                    "train_7": "train_7[:5000]",
+                    "train_8": "train_8[:5000]",
+                    "train_9": "train_9[:5000]",
+                    "test_0": "test_0[:5000]",
+                    "test_1": "test_1[:5000]",
+                    "test_2": "test_2[:5000]",
+                    "test_3": "test_3[:5000]",
+                    "test_4": "test_4[:5000]",
+                    "test_5": "test_5[:5000]",
+                    "test_6": "test_6[:5000]",
+                    "test_7": "test_7[:5000]",
+                    "test_8": "test_8[:5000]",
+                    "test_9": "test_9[:5000]",
+                },
+            )
         if name == VTABNames.CIFAR_10Ordered:
             return _VTABSpecs(
                 name="cifar10_ordered:1.0.0",

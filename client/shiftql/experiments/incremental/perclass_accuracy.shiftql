@@ -1,0 +1,32 @@
+# REGISTER dataset "full-cifar10_splitted-train-0" ("vtab_name", "split", "size") VALUES ("CIFAR-10Splitted", "train_0", 5000);
+# REGISTER dataset "full-cifar10_splitted-train-1" ("vtab_name", "split", "size") VALUES ("CIFAR-10Splitted", "train_1", 5000);
+# REGISTER dataset "full-cifar10_splitted-train-2" ("vtab_name", "split", "size") VALUES ("CIFAR-10Splitted", "train_2", 5000);
+# REGISTER dataset "full-cifar10_splitted-train-3" ("vtab_name", "split", "size") VALUES ("CIFAR-10Splitted", "train_3", 5000);
+# REGISTER dataset "full-cifar10_splitted-train-4" ("vtab_name", "split", "size") VALUES ("CIFAR-10Splitted", "train_4", 5000);
+# REGISTER dataset "full-cifar10_splitted-train-5" ("vtab_name", "split", "size") VALUES ("CIFAR-10Splitted", "train_5", 5000);
+# REGISTER dataset "full-cifar10_splitted-train-6" ("vtab_name", "split", "size") VALUES ("CIFAR-10Splitted", "train_6", 5000);
+# REGISTER dataset "full-cifar10_splitted-train-7" ("vtab_name", "split", "size") VALUES ("CIFAR-10Splitted", "train_7", 5000);
+# REGISTER dataset "full-cifar10_splitted-train-8" ("vtab_name", "split", "size") VALUES ("CIFAR-10Splitted", "train_8", 5000);
+# REGISTER dataset "full-cifar10_splitted-train-9" ("vtab_name", "split", "size") VALUES ("CIFAR-10Splitted", "train_9", 5000);
+
+# REGISTER dataset "full-cifar10_splitted-test-0" ("vtab_name", "split", "size") VALUES ("CIFAR-10Splitted", "test_0", 1000);
+# REGISTER dataset "full-cifar10_splitted-test-1" ("vtab_name", "split", "size") VALUES ("CIFAR-10Splitted", "test_1", 1000);
+# REGISTER dataset "full-cifar10_splitted-test-2" ("vtab_name", "split", "size") VALUES ("CIFAR-10Splitted", "test_2", 1000);
+# REGISTER dataset "full-cifar10_splitted-test-3" ("vtab_name", "split", "size") VALUES ("CIFAR-10Splitted", "test_3", 1000);
+# REGISTER dataset "full-cifar10_splitted-test-4" ("vtab_name", "split", "size") VALUES ("CIFAR-10Splitted", "test_4", 1000);
+# REGISTER dataset "full-cifar10_splitted-test-5" ("vtab_name", "split", "size") VALUES ("CIFAR-10Splitted", "test_5", 1000);
+# REGISTER dataset "full-cifar10_splitted-test-6" ("vtab_name", "split", "size") VALUES ("CIFAR-10Splitted", "test_6", 1000);
+# REGISTER dataset "full-cifar10_splitted-test-7" ("vtab_name", "split", "size") VALUES ("CIFAR-10Splitted", "test_7", 1000);
+# REGISTER dataset "full-cifar10_splitted-test-8" ("vtab_name", "split", "size") VALUES ("CIFAR-10Splitted", "test_8", 1000);
+# REGISTER dataset "full-cifar10_splitted-test-9" ("vtab_name", "split", "size") VALUES ("CIFAR-10Splitted", "test_9", 1000);
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-cifar10_splitted-train-0" tested on task "full-cifar10_splitted-test-0" classified by ["Euclidean NN"] chunk 12 budget 1880 wait;
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-cifar10_splitted-train-1" tested on task "full-cifar10_splitted-test-1" classified by ["Euclidean NN"] chunk 12 budget 1880 wait;
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-cifar10_splitted-train-2" tested on task "full-cifar10_splitted-test-2" classified by ["Euclidean NN"] chunk 12 budget 1880 wait;
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-cifar10_splitted-train-3" tested on task "full-cifar10_splitted-test-3" classified by ["Euclidean NN"] chunk 12 budget 1880 wait;
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-cifar10_splitted-train-4" tested on task "full-cifar10_splitted-test-4" classified by ["Euclidean NN"] chunk 12 budget 1880 wait;
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-cifar10_splitted-train-5" tested on task "full-cifar10_splitted-test-5" classified by ["Euclidean NN"] chunk 12 budget 1880 wait;
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-cifar10_splitted-train-6" tested on task "full-cifar10_splitted-test-6" classified by ["Euclidean NN"] chunk 12 budget 1880 wait;
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-cifar10_splitted-train-7" tested on task "full-cifar10_splitted-test-7" classified by ["Euclidean NN"] chunk 12 budget 1880 wait;
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-cifar10_splitted-train-8" tested on task "full-cifar10_splitted-test-8" classified by ["Euclidean NN"] chunk 12 budget 1880 wait;
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-cifar10_splitted-train-9" tested on task "full-cifar10_splitted-test-9" classified by ["Euclidean NN"] chunk 12 budget 1880 wait;

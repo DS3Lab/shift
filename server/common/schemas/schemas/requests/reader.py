@@ -286,6 +286,7 @@ class VTABNames(str, Enum):
     SUN397 = "SUN397"
     SVHN = "SVHN"
     # below are customized datasets
+    CIFAR_10Splitted = 'CIFAR-10Splitted'
     CIFAR_10Ordered = 'CIFAR-10Ordered'
     CIFAR_9 = "CIFAR-9"
     CIFAR_9TH='CIFAR-9TH'
@@ -304,6 +305,27 @@ class VTABSplits(str, Enum):
     TRAIN800 = "train800"
     VAL200 = "val200"
     TRAIN800VAL200 = "train800val200"
+    TRAIN_0 = 'train_0'
+    TRAIN_1 = 'train_1'
+    TRAIN_2 = 'train_2'
+    TRAIN_3 = 'train_3'
+    TRAIN_4 = 'train_4'
+    TRAIN_5 = 'train_5'
+    TRAIN_6 = 'train_6'
+    TRAIN_7 = 'train_7'
+    TRAIN_8 = 'train_8'
+    TRAIN_9 = 'train_9'
+    TEST_0 = 'test_0'
+    TEST_1 = 'test_1'
+    TEST_2 = 'test_2'
+    TEST_3 = 'test_3'
+    TEST_4 = 'test_4'
+    TEST_5 = 'test_5'
+    TEST_6 = 'test_6'
+    TEST_7 = 'test_7'
+    TEST_8 = 'test_8'
+    TEST_9 = 'test_9'
+
 
 
 class VTABReaderConfig(ReaderConfig):
