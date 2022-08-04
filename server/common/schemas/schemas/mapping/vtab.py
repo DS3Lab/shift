@@ -381,6 +381,22 @@ class _VTABMapping:
                     "test_9": "test_9[:1000]",
                 },
             )
+        if name == VTABNames.DIABETIC_RETHINOPATHY_SPLITTED:
+            return _VTABSpecs(
+                name="diabetic_retinopathy_detection_splitted:1.0.0",
+                splits={
+                    "train_0": "train_0[:25810]",
+                    "train_1": "train_1[:2443]",
+                    "train_2": "train_2[:5292]",
+                    "train_3": "train_3[:873]",
+                    "train_4": "train_4[:708]",
+                    "validation_0": "validation_0[:8130]",
+                    "validation_1": "validation_1[:720]",
+                    "validation_2": "validation_2[:1579]",
+                    "validation_3": "validation_3[:237]",
+                    "validation_4": "validation_4[:240]",
+                },
+            )
         if name == VTABNames.CIFAR_10Ordered:
             return _VTABSpecs(
                 name="cifar10_ordered:1.0.0",

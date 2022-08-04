@@ -296,6 +296,7 @@ class VTABNames(str, Enum):
     CIFAR_10Ordered3 = 'CIFAR-10Ordered3'
     CIFAR_7 = "CIFAR-7"
     CIFAR_7TH='CIFAR-7TH'
+    DIABETIC_RETHINOPATHY_SPLITTED = "Diabetic Rethinopathy Splitted"
     
 class VTABSplits(str, Enum):
     TRAIN = "train"
@@ -325,7 +326,11 @@ class VTABSplits(str, Enum):
     TEST_7 = 'test_7'
     TEST_8 = 'test_8'
     TEST_9 = 'test_9'
-
+    VALIDATION_0 = 'validation_0'
+    VALIDATION_1 = 'validation_1'
+    VALIDATION_2 = 'validation_2'
+    VALIDATION_3 = 'validation_3'
+    VALIDATION_4 = 'validation_4'
 
 
 class VTABReaderConfig(ReaderConfig):

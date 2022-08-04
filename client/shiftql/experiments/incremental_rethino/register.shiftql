@@ -1,0 +1,11 @@
+REGISTER dataset "full-drd-train0" ("vtab_name", "split", "size") VALUES ("Diabetic Rethinopathy Splitted", "train_0", 25810);
+REGISTER dataset "full-drd-train1" ("vtab_name", "split", "size") VALUES ("Diabetic Rethinopathy Splitted", "train_1", 2443);
+REGISTER dataset "full-drd-train2" ("vtab_name", "split", "size") VALUES ("Diabetic Rethinopathy Splitted", "train_2", 5292);
+REGISTER dataset "full-drd-train3" ("vtab_name", "split", "size") VALUES ("Diabetic Rethinopathy Splitted", "train_3", 873);
+REGISTER dataset "full-drd-train4" ("vtab_name", "split", "size") VALUES ("Diabetic Rethinopathy Splitted", "train_4", 708);
+
+REGISTER dataset "full-drd-val0" ("vtab_name", "split", "size") VALUES ("Diabetic Rethinopathy Splitted", "test_0", 8130);
+REGISTER dataset "full-drd-val1" ("vtab_name", "split", "size") VALUES ("Diabetic Rethinopathy Splitted", "test_1", 720);
+REGISTER dataset "full-drd-val2" ("vtab_name", "split", "size") VALUES ("Diabetic Rethinopathy Splitted", "test_2", 1579);
+REGISTER dataset "full-drd-val3" ("vtab_name", "split", "size") VALUES ("Diabetic Rethinopathy Splitted", "test_3", 237);
+REGISTER dataset "full-drd-val4" ("vtab_name", "split", "size") VALUES ("Diabetic Rethinopathy Splitted", "test_4", 240);
