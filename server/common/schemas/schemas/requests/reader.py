@@ -297,6 +297,7 @@ class VTABNames(str, Enum):
     CIFAR_7 = "CIFAR-7"
     CIFAR_7TH='CIFAR-7TH'
     DIABETIC_RETHINOPATHY_SPLITTED = "Diabetic Rethinopathy Splitted"
+    DIABETIC_RETHINOPATHY_ORDERED = "Diabetic Rethinopathy Ordered"
     
 class VTABSplits(str, Enum):
     TRAIN = "train"

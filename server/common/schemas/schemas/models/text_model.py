@@ -92,14 +92,7 @@ class TextKerasLayerConfig(TextFullModelConfig):
         title = "Text Keras Layer"
 
 class HFTextModelConfig(TextFullModelConfig):
-    hf_name: Literal[
-        "bert-base-cased",
-        "bert-base-uncased",
-        "bert-large-cased",
-        "bert-large-uncased",
-        "xlnet-base-cased",
-        "xlnet-large-cased",
-    ] = Field(
+    hf_name: str = Field(
         ...,
         title="HuggingFace Model Identifier",
         description="Model Identifier that is passed directly to HuggingFace",

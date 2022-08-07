@@ -1,0 +1,7 @@
+REGISTER dataset "glue/sst2:1.0.0-train" ("tf_dataset_name", "split", "embed_feature_path", "label_feature_path") VALUES ("glue/sst2:1.0.0", "train", ["sentence"], ["label"]);
+
+REGISTER dataset "glue/sst2:1.0.0-test" ("tf_dataset_name", "split", "embed_feature_path", "label_feature_path") VALUES ("glue/sst2:1.0.0", "validation", ["sentence"], ["label"]);
+
+REGISTER dataset "glue/cola-test" ("tf_dataset_name", "split", "embed_feature_path", "label_feature_path") VALUES ("glue/cola:1.0.0", "validation", ["sentence"], ["label"]);
+
+REGISTER dataset "glue/cola-train" ("tf_dataset_name", "split", "embed_feature_path", "label_feature_path") VALUES ("glue/cola:1.0.0", "train", ["sentence"], ["label"]);

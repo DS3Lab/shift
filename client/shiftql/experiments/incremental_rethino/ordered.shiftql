@@ -1,0 +1,1 @@
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-drd_ordered-train" tested on task "full-drd_ordered-val" classified by ["Euclidean NN"] chunk 79 budget 1880 wait;

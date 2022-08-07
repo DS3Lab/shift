@@ -397,6 +397,11 @@ class _VTABMapping:
                     "validation_4": "validation_4[:240]",
                 },
             )
+        if name == VTABNames.DIABETIC_RETHINOPATHY_ORDERED:
+            return _VTABSpecs(
+                name="diabetic_retinopathy_detection_ordered:1.0.0",
+                splits=_SplitsCalculator.train_test_validation(),
+            )
         if name == VTABNames.CIFAR_10Ordered:
             return _VTABSpecs(
                 name="cifar10_ordered:1.0.0",

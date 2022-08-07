@@ -646,7 +646,8 @@ class JobsDB(BaseDBInterface, JobsDBInterface):
                     "t_max": token_length.max if token_length is not None else None,
                 },
             )
-            json_sequence: Sequence[str] = [r[0] for r in cur.fetchall()]
+            json_sequence: Sequence[str] = [r[1] for r in cur.fetchall()]
+            print(json_sequence)
         return MatchingTextModelsResponse.from_model_json_sequence(json_sequence)
 
     def store_inference_job(self, req: InferenceRequest):
