@@ -3,7 +3,7 @@ import json
 import requests
 from schemas.requests.reader import AllReaderConfigsU
 
-endpoint = "http://10.233.0.1:8001/"
+endpoint = "http://127.0.0.1:8001/"
 
 
 def get_nn_result(hash: str, classifier: str):

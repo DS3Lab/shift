@@ -1,0 +1,3 @@
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-cifar-train" tested on task "full-cifar-val" classified by ["Euclidean NN"] wait;
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-dmlab-train" tested on task "full-dmlab-val" classified by ["Euclidean NN"] wait;
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-flowers-train" tested on task "full-flowers-val" classified by ["Euclidean NN"] wait;
