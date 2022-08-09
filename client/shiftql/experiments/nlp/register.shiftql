@@ -10,6 +10,6 @@
 
 # REGISTER dataset "hf/rotten_tomatoes-val" ("hf_dataset_name", "split", "embed_feature_path", "label_feature_path", "size") VALUES ("rotten_tomatoes", "validation", ["text"], ["label"], 1066);
 
-REGISTER dataset "hf/tweet-hate-train" ("hf_dataset_name", "split", "embed_feature_path", "label_feature_path", "size", "configuration") VALUES ("tweet_eval", "train", ["text"], ["label"], 9000, "hate");
+# REGISTER dataset "hf/tweet-hate-train" ("hf_dataset_name", "split", "embed_feature_path", "label_feature_path", "size", "configuration") VALUES ("tweet_eval", "train", ["text"], ["label"], 9000, "hate");
 
-REGISTER dataset "hf/tweet-hate-val" ("hf_dataset_name", "split", "embed_feature_path", "label_feature_path", "size", "configuration") VALUES ("tweet_eval", "validation", ["text"], ["label"], 1000, "hate");
+# REGISTER dataset "hf/tweet-hate-val" ("hf_dataset_name", "split", "embed_feature_path", "label_feature_path", "size", "configuration") VALUES ("tweet_eval", "validation", ["text"], ["label"], 1000, "hate");

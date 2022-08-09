@@ -511,6 +511,10 @@ class JobsDB(BaseDBInterface, JobsDBInterface):
             return ReadersUsedWithAModelResponse.from_tuples(cur.fetchall())
 
     def get_reader_size(self, json_reader: str):
+        # remove empty field in this json_reader
+        json_reader = json.loads(json_reader)
+        json_reader = {k: v for k, v in json_reader.items() if v is not None}
+        json_reader = json.dumps(json_reader)
         with _db_cursor(self._pool, read_only=True) as cur:
             cur.execute(
                 "SELECT size " "FROM reader where json_dataset = %s",
