@@ -1,2 +1,1 @@
-explain json select * from text_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "glue/cola-train" tested on task "glue/cola-test" classified by ["Euclidean NN"] wait;
 explain json select * from text_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "glue/sst2:1.0.0-train" tested on task "glue/sst2:1.0.0-test" classified by ["Euclidean NN"] wait;

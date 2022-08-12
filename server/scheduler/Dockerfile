@@ -39,6 +39,8 @@ RUN pip install --no-cache-dir -e db_tools
 COPY common/optimizations ./optimizations
 RUN pip install --no-cache-dir -e optimizations
 
+COPY common/telemetry ./telemetry
+
 # Copy code after installing libraries - makes rebuilds faster
 COPY scheduler ./scheduler
 
