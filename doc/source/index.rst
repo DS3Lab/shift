@@ -12,7 +12,7 @@ Getting Started
 
     overview.md
     tutorial.rst
-    guideline.md
+    guidelines.md
 
 Extending SHiFT
 ----------------
