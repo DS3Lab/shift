@@ -4,28 +4,28 @@ This guideline for choosing which search strategy (SHiFT-QL query) to use in SHi
 
 ## General
 
-In general the transfer learning literature suggests to transfer from a model trained on a *similar* dataset. Similarity is rather wage. Obviously, if one happens to have access to a high accuracy pre-trained model on the same dataset, this one can be used without any fine-tuning to yield high accuracy predictions. If no such model existis, best practices and surveys suggest to use a model pre-trained on the smallest distribution in which the target distribution is included. To give an example: let's assume the target dataset contains flowers. It is better to use a model pre-trained on any plants compared to one trained on all living things (e.g., animals and plants).
+In general, the transfer learning literature suggests to transfer from a model trained on a *similar* dataset. Similarity is rather wage. Obviously, if one happens to have access to a high accuracy pre-trained model on the same dataset, this one can be used without any fine-tuning to yield high accuracy predictions. If no such model exists, best practices and surveys suggest using a model pre-trained on the smallest distribution in which the target distribution is included. To give an example: let's assume the target dataset contains flowers. It is better to use a model pre-trained on any plants compared to one trained on all living things (e.g., animals and plants).
 
 ## The Challenge
 
-The challenge with pre-trained models hubs and SHiFT, is that the upstream datatast and distributions are usually not available for users to compare to their downstream dataset. Furthermore, there might be no upstream distribution in which the downstream one is included. To still enable successfull search over the models, we provide some simple suggestions to follow.
+The challenge with pre-trained models hubs and SHiFT, is that the upstream dataset and distributions are usually not available for users to compare to their downstream dataset. Furthermore, there might be no upstream distribution in which the downstream one is included. To still enable successful search over the models, we provide some simple suggestions to follow.
 
 ## Guidelines
 
-We next provide some guidelines pointing to the SHiFT-QL querys numbered in the SHiFT paper which could in many cases yield to a good tradeoff between computational requirement to run the search query and accuracy of the model returned.
+We next provide some guidelines pointing to the SHiFT-QL queries numbered in the SHiFT paper, which could in many cases yield to a good tradeoff between computational requirement to run the search query and accuracy of the model returned.
 
 ### No knowledge
 
-Let us start with the simplest case: If a user of SHiFT has no knowledge about the model pool or relation between downstream dataset and the benchmark datasets, it is the safest to run the hybrid search query (Q4) over all suitable models and setting one trained on the largest corpus as the task-agnostic one. If no model fits as a task-agnostic one, user should use a linear proxy model (Q3), or a cheaper alternative (Q2).
+Let us start with the simplest case: If a user of SHiFT has no knowledge about the model pool or relation between downstream dataset and the benchmark datasets, it is the safest to run the hybrid search query (Q4) over all suitable models and setting one trained on the largest corpus as the task-agnostic one. If no model fits as a task-agnostic one, users should use a linear proxy model (Q3), or a cheaper alternative (Q2).
 
 ### Homogeneous model pool
 
-If all models filtered by the user in a model pool were trained on the same upstream dataset, users should can usually retrive the best model using a simple task-agnostic search query by ranking based on upstream accuracy (Q1). If on the other hand, all models have the same architecture and users have access to the number of upstream samples, this can, again in a task-agnostic manner, be used to rank models accordingly.
+If all models filtered by the user in a model pool were trained on the same upstream dataset, users should usually can retrieve the best model using a simple task-agnostic search query by ranking based on upstream accuracy (Q1). If on the other hand, all models have the same architecture and users have access to the number of upstream samples, this can, again in a task-agnostic manner, be used to rank models accordingly.
 
 ### Similar benchmark dataset(s)
 
-If there existis a similar benchmark datasets in SHiFT (e.g., PETS), the ranking of that model can be used as is to retriev the best model(s). If the user assumes a very similar dataset exists, but does not know which one, techniques like Task2Vec can help retriev this similar dataset (Q5).
-If on the other hand, a user has a structured dataset and knows that there are multiple of them in the set of benchmark datasets, it might be worth filtering the best models for each of the structured dataset and fine-tune all of them (Q8), or alternatively, if this is computationally to demanding, run a linear proxy over those (Q7).
+If there exists a similar benchmark datasets in SHiFT (e.g., PETS), the ranking of that model can be used as is to retrieve the best model(s). If the user assumes a very similar dataset exists, but does not know which one, techniques like Task2Vec can help retrieve this similar dataset (Q5).
+Finally, if a user has a structured dataset and knows that there are multiple of them in the set of benchmark datasets, it might be worth filtering the best models for each of the structured dataset and fine-tune all of them (Q8), or alternatively, if this is computationally too demanding, run a linear proxy over those (Q7).
 
 ## References:
 
