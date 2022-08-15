@@ -1,0 +1,1 @@
+explain json rank * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "vtab-caltech101-train" tested on task "vtab-caltech101-val" by "random" wait;

@@ -69,15 +69,12 @@ class _FinetuneJobInfo(NamedTuple):
 
 # Parameters used by Celery to schedule the job correctly
 
-
 class RemoteJobParams(NamedTuple):
     general_inference_job_name: str
     general_classifier_job_name: str
     general_task2vec_job_name: str
     general_finetune_job_name: str
     general_queue_name: str
-    tf_1_inference_job_name: str
-    tf_1_queue_name: str
 
 
 class CeleryJobManager(ABC):
@@ -223,8 +220,6 @@ class Runner:
             self._successful_ir_hashes,
         )
         self._reset_reload()
-
-        
 
     def _start_successive_halving_job(self):
         _logger.debug("Starting Successive Halving")
@@ -847,7 +842,7 @@ class Runner:
             if not self._no_sleep:
                 sleep(2)
             # We put the hyperband job in another thread for some reasons:
-            # 1. Workers may not have access to the redis queue, which is required for hyperband job.
+            # 1. Workers do not have access to the redis queue, which is required for hyperband job.
             # 2. We need to continue to process other jobs, otherwise, even though hyperband requests has created new jobs, it won't be processed.
             # 3. It is essentially only about checking status, so it is fine to not put it into computationally-heavily workers.
             self._start_successive_halving_job()

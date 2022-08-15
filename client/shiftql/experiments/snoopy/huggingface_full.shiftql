@@ -1,0 +1,37 @@
+#explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-caltech101-train" tested on task "full-caltech101-val" classified by ["Euclidean NN"] wait;
+
+#explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-cifar-train" tested on task "full-cifar-val" classified by ["Euclidean NN"] wait;
+
+#explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-cdp-train" tested on task "full-cdp-val" classified by ["Euclidean NN"] wait;
+
+# explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-clevr-train" tested on task "full-clevr-val" classified by ["Euclidean NN"] wait;
+
+# explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-dmlab-train" tested on task "full-dmlab-val" classified by ["Euclidean NN"] wait;
+
+# explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-flowers-train" tested on task "full-flowers-val" classified by ["Euclidean NN"] wait;
+
+# explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-diabet-train" tested on task "full-diabet-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-dop-train" tested on task "full-dop-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-dlp-train" tested on task "full-dlp-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-dtd-train" tested on task "full-dtd-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-eurosat-train" tested on task "full-eurosat-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-kdp-train" tested on task "full-kdp-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-pet-train" tested on task "full-pet-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-pc-train" tested on task "full-pc-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-resisc-train" tested on task "full-resisc-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-sna-train" tested on task "full-sna-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-snb-train" tested on task "full-snb-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-sun-train" tested on task "full-sun-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "full-svhn-train" tested on task "full-svhn-val" classified by ["Euclidean NN"] wait;

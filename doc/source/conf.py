@@ -6,20 +6,29 @@
 
 # -- Path setup --------------------------------------------------------------
 
-# If extensions (or modules to document with autodoc) are in another directory,
-# add these directories to sys.path here. If the directory is relative to the
-# documentation root, use os.path.abspath to make it absolute, like shown here.
-#
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath("../.."))
+common_imports = [
+    "../../server",
+    "../../server/common",
+    "../../server/common/db_tools",
+    "../../server/common/finetune",
+    "../../server/common/optimizations",
+    "../../server/common/pipeline",
+    "../../server/common/schemas",
+    "../../server/common/task2vec",
+    "../../server/common/telemetry",
+]
+
+for each in common_imports:
+    sys.path.insert(0, os.path.abspath(each))
 
 
 # -- Project information -----------------------------------------------------
 
-project = "sh¡ft!"
-copyright = "2022, DS3Lab"
+project = "SHiFT"
+copyright = "2022, DS3Lab, ETH Zurich"
 author = "DS3Lab"
 
 
@@ -32,7 +41,7 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.viewcode",
     "sphinx.ext.napoleon",
-    "sphinxcontrib.mermaid",
+    "myst_parser",
 ]
 
 autodoc_default_options = {
@@ -48,6 +57,7 @@ autodoc_mock_imports = [
     "tensorflow",
     "tensorflow_datasets",
     "tensorflow_hub",
+    "tensorflow_addons",
     # sphinx does not support inheritance + ABC for Python < 3.7
     # https://github.com/sphinx-doc/sphinx/issues/5995
     "schemas",
@@ -64,15 +74,19 @@ autodoc_mock_imports = [
     "sklearn",
     "typing_extensions",
     "faiss",
+    "scipy",
+    "dstool",
 ]
 
 autodoc_typehints = "none"
 add_module_names = False
 autodoc_member_order = "bysource"
 
+source_suffix = ['.rst', '.md']
+
 # sphinx-autodoc-typehints
-# set_type_checking_flag = True
-# always_document_param_types = True
+set_type_checking_flag = True
+always_document_param_types = True
 
 # intersphinx_mapping = {
 #     "worker_general": (

@@ -1,0 +1,1 @@
+select * from image_models where source='Huggingface';

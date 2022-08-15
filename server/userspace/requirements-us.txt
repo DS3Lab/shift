@@ -1,0 +1,8 @@
+uvicorn
+fastapi[all]
+kornia
+scipy
+tqdm
+wandb
+torch
+torchvision

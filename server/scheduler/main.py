@@ -34,10 +34,8 @@ class Settings(BaseSettings):
     worker_general_task2vec_job_name: str
     worker_general_classifier_job_name: str
     worker_general_finetune_job_name: str
-    worker_tf1_inference_job_name: str
 
     worker_general_queue_name: str
-    worker_tf1_queue_name: str
 
     max_cpu_jobs: int
     shift_devices: str = ""
@@ -110,8 +108,6 @@ if __name__ == "__main__":
             general_finetune_job_name=settings_.worker_general_finetune_job_name,
             general_task2vec_job_name=settings_.worker_general_task2vec_job_name,
             general_queue_name=settings_.worker_general_queue_name,
-            tf_1_inference_job_name=settings_.worker_tf1_inference_job_name,
-            tf_1_queue_name=settings_.worker_tf1_queue_name,
         ),
         jobs_db=JobsDB(
             dbname=settings_.postgres_database,

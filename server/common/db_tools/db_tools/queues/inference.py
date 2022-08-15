@@ -9,8 +9,7 @@ from .base import _EmptyContextManager, _logger
 
 
 class InferenceQueue:
-    """Stores inference requests waiting for execution. If Redis is used, each
-    thread/process should use its own instance. If Redis is not used, a single instance should be used by one thread/process.
+    """Stores inference requests waiting for execution. If Redis is used, each thread/process should use its own instance. If Redis is not used, a single instance should be used by one thread/process.
 
     Args:
         pool (BlockingConnectionPool, optional): Connection pool needed to use Redis. The default value None means that Redis is not used. Instead, regular Python data structures are used.

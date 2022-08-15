@@ -255,14 +255,14 @@ def _get_nn_result(
         test_mutable_data_sequence
     )
     stop = timeit.default_timer()
-    add_event(
-        'load_inference_result',
-        {
+    # add_event(
+    #     'load_inference_result',
+    #     {
 
-            'device': 'GPU' if device == Device.GPU else 'CPU',
-        },
-        round(1000 * (stop - start))
-    )
+    #         'device': 'GPU' if device == Device.GPU else 'CPU',
+    #     },
+    #     round(1000 * (stop - start))
+    # )
     # Each list contains a column vector for each element of train mutable data
     # sequence
     # # For each test point: distance to the closest training point
@@ -279,14 +279,14 @@ def _get_nn_result(
         start = timeit.default_timer()
         train_md_dict, train_md_length = io.read_mutable_data(mutable_data)
         stop = timeit.default_timer()
-        add_event(
-            'load_inference_result',
-            {
+        # add_event(
+        #     'load_inference_result',
+        #     {
 
-                'device': 'GPU' if device == Device.GPU else 'CPU',
-            },
-            round(1000 * (stop - start))
-        )
+        #         'device': 'GPU' if device == Device.GPU else 'CPU',
+        #     },
+        #     round(1000 * (stop - start))
+        # )
         # 1.2 Determine for each test point the closest training point and its index
         dist_closest_points, ind_closest_points = _nn(
             train=train_md_dict[REFN],

@@ -87,8 +87,7 @@ jobs_db = JobsDB(
     port=settings_.postgres_port,
 )
 
-app = FastAPI(title="shift!", description="Search Engine for Transfer Learning")
-
+app = FastAPI(title="SHiFT", description="Search Engine for Transfer Learning")
 
 @app.get(
     "/progress/{job_id}",
@@ -114,7 +113,6 @@ def progress(job_id: str, status_map: StatusMap = Depends(redis_data.get_status_
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, content=result.dict()
         )
     return result
-
 
 @app.post(
     "/query",
@@ -297,7 +295,6 @@ def purge_request():
     if PID != 0:
         os.kill(PID, signal.SIGHUP)
 
-
 if __name__ == "__main__":
     logging.info("Populating...")
-    # jobs_db.populate_model_databases()
+    jobs_db.populate_model_databases()

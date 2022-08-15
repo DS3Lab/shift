@@ -1,3 +1,4 @@
+from loguru import logger
 import numpy as np
 import torch as pt
 from pipeline import DataType, Device
@@ -134,7 +135,7 @@ class HFImageModel(Model):
     def __init__(self, config: HFImageModelConfig, device: Device) -> None:
         self._device = pt.device(
             "cuda:0") if device == Device.GPU else pt.device("cpu")
-        model = AutoFeatureExtractor.from_pretrained(config.hf_name)
+        model = AutoModel.from_pretrained(config.hf_name)
         model.eval()
         model.to(self._device)
         self._model = model
@@ -154,6 +155,11 @@ class HFImageModel(Model):
             features.transpose((0, 3, 1, 2)), dtype=pt.float32, device=self._device
         )
         with pt.no_grad():
-            result = self._model(features_pt, return_tensors='pt')
-        self._result = result.cpu().numpy()
-        return self._result
+            result = self._model(
+                features_pt,
+                output_hidden_states=True
+            )
+        hidden_states = result.last_hidden_state[:, 0, :]
+        hidden_states = hidden_states.squeeze()
+        self._result = hidden_states.cpu().numpy()
+        return self._result 

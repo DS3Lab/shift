@@ -1,7 +1,6 @@
 from rich.console import Console
 from rich.table import Table
 
-
 class Formatter(object):
     def __init__(self):
         self.console = Console()

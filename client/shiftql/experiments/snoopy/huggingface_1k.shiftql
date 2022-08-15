@@ -1,0 +1,37 @@
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "vtab-caltech101-train" tested on task "vtab-caltech101-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "vtab-cifar-train" tested on task "vtab-cifar-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "vtab-cdp-train" tested on task "vtab-cdp-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "vtab-clevr-train" tested on task "vtab-clevr-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "vtab-diabet-train" tested on task "vtab-diabet-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "vtab-dmlab-train" tested on task "vtab-dmlab-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "vtab-dop-train" tested on task "vtab-dop-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "vtab-dlp-train" tested on task "vtab-dlp-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "vtab-dtd-train" tested on task "vtab-dtd-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "vtab-eurosat-train" tested on task "vtab-eurosat-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "vtab-kdp-train" tested on task "vtab-kdp-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "vtab-flowers-train" tested on task "vtab-flowers-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "vtab-pet-train" tested on task "vtab-pet-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "vtab-pc-train" tested on task "vtab-pc-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "vtab-resisc-train" tested on task "vtab-resisc-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "vtab-sna-train" tested on task "vtab-sna-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "vtab-snb-train" tested on task "vtab-snb-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "vtab-sun-train" tested on task "vtab-sun-val" classified by ["Euclidean NN"] wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on "vtab-svhn-train" tested on task "vtab-svhn-val" classified by ["Euclidean NN"] wait;

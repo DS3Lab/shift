@@ -5,10 +5,10 @@ from pipeline.model import Model, PreprocessingSpecs
 from schemas.models.image_model import ImageKerasLayerConfig
 from schemas.models.text_model import TextKerasLayerConfig
 from tensorflow import keras
+from loguru import logger
 
 from .._config import settings
 from .preprocessing import ImageCropResize3Channels, TextNoOpPreprocessing
-
 
 class ImageKerasLayer(Model):
     """Runs inference with an image Keras layer.
@@ -64,4 +64,5 @@ class TextKerasLayer(Model):
     def apply_embedding(self, features: np.ndarray) -> np.ndarray:
         with tf.device(self._device_string):
             tf_tensor = tf.convert_to_tensor(features)
+            logger.info(f"tf tensor shape: {tf_tensor.shape}")
             return self._layer(tf_tensor).numpy()

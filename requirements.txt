@@ -15,3 +15,6 @@ pottery
 fastapi
 tensorflow
 dstool
+sphinx
+myst_parser
+furo

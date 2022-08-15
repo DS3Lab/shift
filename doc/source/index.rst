@@ -1,27 +1,25 @@
-sh¡ft!
+SHiFT
 ======
 
-Tutorial
---------
+Welcome to the document of the SHiFT project - the first search engine for machine learning models. 
+
+
+
+Getting Started
+----------------
 .. toctree::
     :maxdepth: 2
 
+    overview.md
     tutorial.rst
+    guidelines.md
 
-HOWTO Guides
-------------
+Extending SHiFT
+----------------
 .. toctree::
     :maxdepth: 2
-
-    howtos.rst
-
-References
-----------
-
-.. toctree::
-    :maxdepth: 1
-
-    references.rst
+    
+    extensions/strategies.md
 
 API Reference
 -------------
@@ -33,8 +31,14 @@ API Reference
     rest.rst
     common.rst
     worker_general.rst
-    worker_tf1.rst
     shiftql.rst
+
+Acknowledgements
+----------------
+.. toctree::
+    :maxdepth: 2
+
+    references.rst
 
 Index
 -----

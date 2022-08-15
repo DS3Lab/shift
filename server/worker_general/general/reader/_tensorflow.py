@@ -154,7 +154,7 @@ class TFReader(Reader):
             sleep(5)
             _logger.info("Retrying loading TFDS dataset with config %r", config)
             data, info = self._load_data(config.tf_dataset_name, config.split)
-
+        
         # Check that specified features are valid, determine embed feature type
         if custom_extraction_fn is None:
             # For a given path (sequence of keys) checks the path for the SPECIFIC features dictionary returned by the loaded dataset
@@ -171,6 +171,7 @@ class TFReader(Reader):
             )
         else:
             self._data_type = DataType.UNKNOWN
+        self._num_classes = info.features[config.label_feature_path[0]].num_classes
 
         # Shuffle dataset, always
         data = data.shuffle(
@@ -195,7 +196,6 @@ class TFReader(Reader):
         # 2. Default extraction function -> look whether embed feature was specified
         else:
             run_preprocessing = config.embed_feature_present
-
         self._data = _prepare_dataset(
             data=data,
             extraction_fn=custom_extraction_fn

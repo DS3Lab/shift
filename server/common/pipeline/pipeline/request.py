@@ -115,9 +115,9 @@ class InferenceRunner:
 
         preprocessing_specs: PreprocessingSpecs = model.get_preprocessing_specs()
         stop = timeit.default_timer()
-        add_event('load_model', {
-            'model': model_config.invariant_json,
-        }, round(1000 * (stop-start)))
+        # add_event('load_model', {
+        #     'model': model_config.invariant_json,
+        # }, round(1000 * (stop-start)))
         # 3. Load reader
         start = timeit.default_timer()
         status_updater.update("Loading reader (model loaded)")
@@ -125,9 +125,9 @@ class InferenceRunner:
             reader_config, inference_request.batch_size, preprocessing_specs
         )
         stop = timeit.default_timer()
-        add_event('load_reader', {
-            'reader': reader_config.invariant_json,
-        }, round(1000 * (stop-start)))
+        # add_event('load_reader', {
+        #     'reader': reader_config.invariant_json,
+        # }, round(1000 * (stop-start)))
         # 4. Check compatibility of reader and model
         if (
             reader.data_type != model.data_type
@@ -160,10 +160,10 @@ class InferenceRunner:
 
         writer.finalize()
         stop = timeit.default_timer()
-        add_event('inference', {
-            'model': model_config.invariant_json,
-            'reader':reader_config.invariant_json
-        }, round(1000 * (stop-start)))
+        # add_event('inference', {
+        #     'model': model_config.invariant_json,
+        #     'reader':reader_config.invariant_json
+        # }, round(1000 * (stop-start)))
 
 class FinetuneRunner:
     """Runs finetune job based on the specified finetune request on the specified device"""

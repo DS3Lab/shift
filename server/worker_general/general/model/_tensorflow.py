@@ -45,7 +45,6 @@ class _TFModel(Model):
         with tf.device(self._device_string):
             tf_tensor = tf.convert_to_tensor(features)
             tf_result = self._model(tf_tensor).numpy()
-
         return self._after_inference_hook(tf_result)
 
     # # Meant to be overridden

@@ -32,7 +32,7 @@ class ClassifierDeps:
             self._id_to_json = RedisDict(redis=redis_instance, key=key + "-json")
             self._waiting_ids = RedisDeque(redis=redis_instance, key=key + "-wait")
             self._ready_ids = RedisDeque(redis=redis_instance, key=key + "-ready")
-            self._lock = Redlock(key=key + "-lock", masters={redis_instance})
+            self._lock = Redlock(key=key + "-lock", masters={redis_instance}, auto_release_time=30)
             self._serialize = lambda x: x.json()
             self._deserialize = lambda x: ClassifierRequest.parse_raw(x)
         else:
@@ -110,7 +110,7 @@ class ClassifierDeps:
                 self._waiting_ids.remove(id_)
                 self._id_to_deps.pop(id_)
                 self._id_to_json.pop(id_)
-
+        _logger.info("Lock status: %s", self._lock.locked())
         return failed
 
     def any_request_ready(self) -> bool:
