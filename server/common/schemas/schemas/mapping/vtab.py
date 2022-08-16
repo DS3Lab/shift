@@ -245,7 +245,13 @@ class _VTABMapping:
                 ),
                 extraction_fn=self._extraction_fns.clevr_counting,
             )
-
+        if name == VTABNames.CIFAR_10:
+            return _VTABSpecs(
+                name="cifar10:3.0.2",
+                splits=_SplitsCalculator.train_test(
+                    train_size=50_000, train_percent=100
+                ),
+            )
         if name == VTABNames.DIABETIC_RETHINOPATHY:
             return _VTABSpecs(
                 name="diabetic_retinopathy_detection/btgraham-300:3.0.0",
@@ -348,7 +354,117 @@ class _VTABMapping:
                     train_size=73_257, train_percent=90
                 ),
             )
-
+        # below are customized datasets
+        if name == VTABNames.CIFAR_10Splitted:
+            return _VTABSpecs(
+                name="cifar10_splitted:1.0.0",
+                splits={
+                    "train_0": "train_0[:5000]",
+                    "train_1": "train_1[:5000]",
+                    "train_2": "train_2[:5000]",
+                    "train_3": "train_3[:5000]",
+                    "train_4": "train_4[:5000]",
+                    "train_5": "train_5[:5000]",
+                    "train_6": "train_6[:5000]",
+                    "train_7": "train_7[:5000]",
+                    "train_8": "train_8[:5000]",
+                    "train_9": "train_9[:5000]",
+                    "test_0": "test_0[:1000]",
+                    "test_1": "test_1[:1000]",
+                    "test_2": "test_2[:1000]",
+                    "test_3": "test_3[:1000]",
+                    "test_4": "test_4[:1000]",
+                    "test_5": "test_5[:1000]",
+                    "test_6": "test_6[:1000]",
+                    "test_7": "test_7[:1000]",
+                    "test_8": "test_8[:1000]",
+                    "test_9": "test_9[:1000]",
+                },
+            )
+        if name == VTABNames.DIABETIC_RETHINOPATHY_SPLITTED:
+            return _VTABSpecs(
+                name="diabetic_retinopathy_detection_splitted:1.0.0",
+                splits={
+                    "train_0": "train_0[:25810]",
+                    "train_1": "train_1[:2443]",
+                    "train_2": "train_2[:5292]",
+                    "train_3": "train_3[:873]",
+                    "train_4": "train_4[:708]",
+                    "validation_0": "validation_0[:8130]",
+                    "validation_1": "validation_1[:720]",
+                    "validation_2": "validation_2[:1579]",
+                    "validation_3": "validation_3[:237]",
+                    "validation_4": "validation_4[:240]",
+                },
+            )
+        if name == VTABNames.DIABETIC_RETHINOPATHY_ORDERED:
+            return _VTABSpecs(
+                name="diabetic_retinopathy_detection_ordered:1.0.0",
+                splits=_SplitsCalculator.train_test_validation(),
+            )
+        if name == VTABNames.CIFAR_10Ordered:
+            return _VTABSpecs(
+                name="cifar10_ordered:1.0.0",
+                splits=_SplitsCalculator.train_test(
+                    train_size=50_000, train_percent=100
+                ),
+            )
+        if name == VTABNames.CIFAR_9:
+            return _VTABSpecs(
+                name="cifarn:3.0.3",
+                splits=_SplitsCalculator.train_test(
+                    train_size=45_000, train_percent=100
+                ),
+            )
+        if name == VTABNames.CIFAR_9TH:
+            return _VTABSpecs(
+                name="cifar9_th:1.0.0",
+                splits=_SplitsCalculator.train_test(
+                    train_size=5000, train_percent=100
+                ),
+            )
+        if name == VTABNames.CIFAR_10Ordered2:
+            return _VTABSpecs(
+                name="cifar10_ordered2:1.0.0",
+                splits=_SplitsCalculator.train_test(
+                    train_size=50_000, train_percent=100
+                ),
+            )
+        if name == VTABNames.CIFAR_8:
+            return _VTABSpecs(
+                name="cifar8:1.0.0",
+                splits=_SplitsCalculator.train_test(
+                    train_size=40_000, train_percent=100
+                ),
+            )
+        if name == VTABNames.CIFAR_8TH:
+            return _VTABSpecs(
+                name="cifar8_th:1.0.0",
+                splits=_SplitsCalculator.train_test(
+                    train_size=10_000, train_percent=100
+                ),
+            )
+        if name == VTABNames.CIFAR_10Ordered3:
+            return _VTABSpecs(
+                name="cifar10_ordered3:1.0.0",
+                splits=_SplitsCalculator.train_test(
+                    train_size=50_000, train_percent=100
+                ),
+            )
+        if name == VTABNames.CIFAR_7:
+            return _VTABSpecs(
+                name="cifar7:1.0.0",
+                splits=_SplitsCalculator.train_test(
+                    train_size=35_000, train_percent=100
+                ),
+            )
+        if name == VTABNames.CIFAR_7TH:
+            return _VTABSpecs(
+                name="cifar7_th:1.0.0",
+                splits=_SplitsCalculator.train_test(
+                    train_size=15_000, train_percent=100
+                ),
+            )
         raise ValueError(f"Unknown key {name!r}")
 
 

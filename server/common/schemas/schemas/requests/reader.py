@@ -264,6 +264,7 @@ class TFReaderConfig(FeaturesMixin, ReaderConfig):
 
 class VTABNames(str, Enum):
     CALTECH_101 = "Caltech101"
+    CIFAR_10 = "CIFAR-10"
     CIFAR_100 = "CIFAR-100"
     CLEVR_DISTANCE_PREDICTION = "CLEVR distance prediction"
     CLEVR_COUNTING = "CLEVR counting"
@@ -284,8 +285,20 @@ class VTABNames(str, Enum):
     #  site-packages/tensorflow_datasets/image_classification/sun397_tfds_tr.txt
     SUN397 = "SUN397"
     SVHN = "SVHN"
-
-
+    # below are customized datasets
+    CIFAR_10Splitted = 'CIFAR-10Splitted'
+    CIFAR_10Ordered = 'CIFAR-10Ordered'
+    CIFAR_9 = "CIFAR-9"
+    CIFAR_9TH='CIFAR-9TH'
+    CIFAR_10Ordered2 = 'CIFAR-10Ordered2'
+    CIFAR_8 = "CIFAR-8"
+    CIFAR_8TH='CIFAR-8TH'
+    CIFAR_10Ordered3 = 'CIFAR-10Ordered3'
+    CIFAR_7 = "CIFAR-7"
+    CIFAR_7TH='CIFAR-7TH'
+    DIABETIC_RETHINOPATHY_SPLITTED = "Diabetic Rethinopathy Splitted"
+    DIABETIC_RETHINOPATHY_ORDERED = "Diabetic Rethinopathy Ordered"
+    
 class VTABSplits(str, Enum):
     TRAIN = "train"
     VAL = "val"
@@ -294,6 +307,31 @@ class VTABSplits(str, Enum):
     TRAIN800 = "train800"
     VAL200 = "val200"
     TRAIN800VAL200 = "train800val200"
+    TRAIN_0 = 'train_0'
+    TRAIN_1 = 'train_1'
+    TRAIN_2 = 'train_2'
+    TRAIN_3 = 'train_3'
+    TRAIN_4 = 'train_4'
+    TRAIN_5 = 'train_5'
+    TRAIN_6 = 'train_6'
+    TRAIN_7 = 'train_7'
+    TRAIN_8 = 'train_8'
+    TRAIN_9 = 'train_9'
+    TEST_0 = 'test_0'
+    TEST_1 = 'test_1'
+    TEST_2 = 'test_2'
+    TEST_3 = 'test_3'
+    TEST_4 = 'test_4'
+    TEST_5 = 'test_5'
+    TEST_6 = 'test_6'
+    TEST_7 = 'test_7'
+    TEST_8 = 'test_8'
+    TEST_9 = 'test_9'
+    VALIDATION_0 = 'validation_0'
+    VALIDATION_1 = 'validation_1'
+    VALIDATION_2 = 'validation_2'
+    VALIDATION_3 = 'validation_3'
+    VALIDATION_4 = 'validation_4'
 
 
 class VTABReaderConfig(ReaderConfig):

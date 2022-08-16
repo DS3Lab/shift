@@ -10,7 +10,7 @@ from schemas.models import (
 from schemas.requests.common import ClassifierRequest, InferenceRequest
 from schemas.requests.reader import AllReaderConfigsU
 from schemas.task.result import KnownResult
-
+from dstool.database import add_event
 from ._base import ID, Hash, Status, _DefaultConfig
 
 
@@ -75,12 +75,17 @@ class NearestNeighborResult(BaseModel):
         Returns:
             int: Number of errors.
         """
+        ts = add_event(payload={
+            'classifier': 'NN',
+        }, tags=['shift', 'calc_error', 'start'])
         cnt_error = 0
         length = len(self.train_labels)
         for i in range(length):
             if self.train_labels[i] != self.test_labels[i]:
                 cnt_error += 1
-
+        ts = add_event(payload={
+            'classifier': 'NN',
+        }, tags=['shift', 'calc_error', 'end'], previous_timestamp=ts)
         return cnt_error
 
     @root_validator

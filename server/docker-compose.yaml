@@ -46,7 +46,23 @@ services:
       - postgres
     secrets:
       - postgres_password
-
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+  # rest:
+  #   build:
+  #     context: .  
+  #     dockerfile: rest/Dockerfile
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - "8000:8000"
+  #   # Signal handling when using multiple entrypoint commands: https://twitter.com/Docker/status/628788890472681472
+  #   # Wait for databases: https://docs.docker.com/compose/startup-order/
+  #   entrypoint: [ "/bin/bash", "-c", "dockerize -wait tcp://${POSTGRES_HOST}:${POSTGRES_PORT} -wait tcp://${REDIS_HOST}:${REDIS_PORT} && python main.py && exec uvicorn main:app --host ${REST_HOST} --workers ${REST_NUM_WORKERS}" ]
+  #   depends_on:
+  #     - scheduler
+  #   secrets:
+  #     - postgres_password
 #  userspace:
 #    build:
 #      context: .

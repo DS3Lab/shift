@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.8-slim
 
 # Add user
 # https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
@@ -38,6 +38,8 @@ RUN pip install --no-cache-dir -e db_tools
 
 COPY common/optimizations ./optimizations
 RUN pip install --no-cache-dir -e optimizations
+
+COPY common/telemetry ./telemetry
 
 # Copy code after installing libraries - makes rebuilds faster
 COPY scheduler ./scheduler

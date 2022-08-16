@@ -1,10 +1,4 @@
-from dstool.database import push_couch
+from dstool.database import add_event
 
-@push_couch
-def add_event(event_type, event_data, elapsed):
-    data={
-        "event_type": event_type,
-        "event_data": event_data,
-        "elapsed_time": elapsed,
-    }
-    return data
+def push_event(data, tags=[], previous=None):
+    add_event(data, ['shift'].extend(tags), previous)

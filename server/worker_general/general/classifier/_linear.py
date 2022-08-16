@@ -33,7 +33,7 @@ def _linear_classifier(
         np.ndarray: predicted labels of the testing points, of the shape (num_test_points, 1)
     """
     input_dimension = train_X.shape[1]
-    num_classes = len(set(test_y))
+    num_classes = len(set(np.concatenate((test_y, train_y))))
     # since we receive numpy arrays, we can convert them to pytorch tensors to utilitize pytorch.
     train_X = pt.from_numpy(train_X).float()
     test_X = pt.from_numpy(test_X).float()

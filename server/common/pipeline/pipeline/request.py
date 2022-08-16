@@ -9,9 +9,8 @@ from schemas.requests.common import InferenceRequest, Task2VecRequest
 from schemas.requests.finetune import FinetuneRequest
 from task2vec.src.interface import convertReader, convertSHIFTModel
 from task2vec.src.task2vec import Task2Vec
-from common.telemetry.telemetry import add_event
 import timeit
-
+from dstool.database import add_event
 from ._base import DataType, Device
 from ._config import settings
 from .io import NumPyWriter
@@ -107,6 +106,10 @@ class InferenceRunner:
 
         # 2. Load model if that is needed
         start = timeit.default_timer()
+        ts = add_event(payload={
+            "event": "load_model",
+            "model_config": model_config.invariant_json
+        },tags=['shift','load_model','start'])
         status_updater.update("Loading model (reader not loaded yet)")
         if reader_config.embed_feature_present:
             model = self._model_factory.get_model(model_config, device)
@@ -114,20 +117,23 @@ class InferenceRunner:
             model = NullModel()
 
         preprocessing_specs: PreprocessingSpecs = model.get_preprocessing_specs()
-        stop = timeit.default_timer()
-        # add_event('load_model', {
-        #     'model': model_config.invariant_json,
-        # }, round(1000 * (stop-start)))
+        add_event(payload={
+            "event": "load_model",
+            "model_config": model_config.invariant_json
+        },tags=['shift','load_model','end'], previous_timestamp=ts)
         # 3. Load reader
-        start = timeit.default_timer()
+        ts = add_event(payload={
+            "event": "load_reader",
+            "reader_config": reader_config.invariant_json
+        },tags=['shift','load_reader','start'])
         status_updater.update("Loading reader (model loaded)")
         reader = self._reader_factory.get_reader(
             reader_config, inference_request.batch_size, preprocessing_specs
         )
-        stop = timeit.default_timer()
-        # add_event('load_reader', {
-        #     'reader': reader_config.invariant_json,
-        # }, round(1000 * (stop-start)))
+        add_event(payload={
+            "event": "load_reader",
+            "reader_config": reader_config.invariant_json
+        },tags=['shift','load_reader','end'], previous_timestamp=ts)
         # 4. Check compatibility of reader and model
         if (
             reader.data_type != model.data_type
@@ -139,7 +145,11 @@ class InferenceRunner:
             )
 
         # 5. Run inference
-        start = timeit.default_timer()
+        add_event(payload={
+            "event": "inference",
+            'model_config': model_config.invariant_json,
+            'reader_config':reader_config.invariant_json
+        },tags=['shift', 'inference','start'])
         status_updater.update("Starting with inference")
         writer = NumPyWriter(
             settings.get_results_path_str(inference_request.hash))
@@ -160,10 +170,11 @@ class InferenceRunner:
 
         writer.finalize()
         stop = timeit.default_timer()
-        # add_event('inference', {
-        #     'model': model_config.invariant_json,
-        #     'reader':reader_config.invariant_json
-        # }, round(1000 * (stop-start)))
+        add_event(payload={
+            "event": "inference",
+            'model_config': model_config.invariant_json,
+            'reader_config':reader_config.invariant_json
+        },tags=['shift', 'inference', 'end'], previous_timestamp=ts)
 
 class FinetuneRunner:
     """Runs finetune job based on the specified finetune request on the specified device"""

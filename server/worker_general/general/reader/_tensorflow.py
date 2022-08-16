@@ -173,7 +173,7 @@ class TFReader(Reader):
             self._data_type = DataType.UNKNOWN
         self._num_classes = info.features[config.label_feature_path[0]].num_classes
 
-        # Shuffle dataset, always
+        # Shuffle dataset, never
         data = data.shuffle(
             buffer_size=100000,
             reshuffle_each_iteration=False,

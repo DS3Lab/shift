@@ -1,10 +1,8 @@
-import json
-
 import requests
 from schemas.requests.reader import AllReaderConfigsU
 
 endpoint = "http://127.0.0.1:8001/"
-
+#endpoint = "http://10.233.0.1:8001/" with SH
 
 def get_nn_result(hash: str, classifier: str):
     if classifier == "Linear":
@@ -16,11 +14,12 @@ def get_nn_result(hash: str, classifier: str):
     else:
         return req.text
 
-
 def get_reader_size(reader: AllReaderConfigsU):
     req = requests.post(
         endpoint + "query_reader_size_by_json", json={"json_reader": reader}
     )
+    print(reader)
+    print(req.text)
     if req.text == "null":
         return None
     else:

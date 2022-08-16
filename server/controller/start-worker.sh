@@ -1,3 +1,3 @@
-# --- UNCOMMENT THESE ENVIRONMENT VARIABLES IF NOT IN DOCKER ---
+# --- REMOVE .local.env IF IN DOCKER ---
 
-cd worker_general && REDIS_BROKER=redis://localhost:63791 REDIS_BACKEND=redis://localhost:63791 REDIS_PORT=63791 REDIS_DB=0 POSTGRES_PORT=54321 POSTGRES_HOST=localhost POSTGRES_USER=postgres POSTGRES_DATABASE=postgres PYTHONPATH=../common/pipeline/:../common/db_tools/:../common/finetune/:../common/optimizations/:../common/schemas/:../common/task2vec/:../common/telemetry:../ celery -A main worker -c 8 -Q shift:queue_1 --loglevel=INFO --max-tasks-per-child=1
+export $(grep -v '^#' .env | xargs -d '\n') && export $(grep -v '^#' .local.env | xargs -d '\n') && cd worker_general && celery -A main worker -c 8 -Q shift:queue_1 --loglevel=INFO --max-tasks-per-child=1

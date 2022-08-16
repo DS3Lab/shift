@@ -2,8 +2,8 @@ from pydantic import BaseModel, Field
 
 
 class GradientDescentSettings(BaseModel):
-    learning_rate: float = 0.01
-    num_epochs: int = 2000
+    learning_rate: float = 0.1
+    num_epochs: int = 100
 
 
 class Classifier(BaseModel):

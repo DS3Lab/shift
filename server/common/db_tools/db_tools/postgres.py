@@ -511,6 +511,10 @@ class JobsDB(BaseDBInterface, JobsDBInterface):
             return ReadersUsedWithAModelResponse.from_tuples(cur.fetchall())
 
     def get_reader_size(self, json_reader: str):
+        # remove empty field in this json_reader
+        json_reader = json.loads(json_reader)
+        json_reader = {k: v for k, v in json_reader.items() if v is not None}
+        json_reader = json.dumps(json_reader)
         with _db_cursor(self._pool, read_only=True) as cur:
             cur.execute(
                 "SELECT size " "FROM reader where json_dataset = %s",
@@ -646,7 +650,8 @@ class JobsDB(BaseDBInterface, JobsDBInterface):
                     "t_max": token_length.max if token_length is not None else None,
                 },
             )
-            json_sequence: Sequence[str] = [r[0] for r in cur.fetchall()]
+            json_sequence: Sequence[str] = [r[1] for r in cur.fetchall()]
+            print(json_sequence)
         return MatchingTextModelsResponse.from_model_json_sequence(json_sequence)
 
     def store_inference_job(self, req: InferenceRequest):

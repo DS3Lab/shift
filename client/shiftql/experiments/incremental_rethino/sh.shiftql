@@ -1,0 +1,3 @@
+#explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on ["full-drd-train0", "full-drd-train2", "full-drd-train3", "full-drd-train4", "full-drd-train1"] tested on task ["full-drd-val0","full-drd-val1","full-drd-val2","full-drd-val3"] classified by ["Euclidean NN"] chunk 58 budget 1880 wait;
+
+explain json select * from image_models where source='HuggingFace Transformers' ORDER BY err ASC trained on ["full-drd-train0", "full-drd-train2", "full-drd-train3", "full-drd-train4", "full-drd-train1"] tested on task "full-diabet-val" classified by ["Euclidean NN"] chunk 58 budget 1880 wait;

@@ -24,6 +24,7 @@ from schemas.requests.common import (
 )
 from schemas.requests.finetune import FinetuneRequest
 from schemas.response import LinearResult, NearestNeighborResult, StatusResponse
+from dstool.database import add_event
 
 from ._devices import DeviceID, DeviceManager
 
@@ -228,7 +229,8 @@ class Runner:
             hr = self._hyperband_queue.get()
             logger.info([test.reader.invariant_json for test in hr.test])
             for test in hr.test:
-                size = self._jobs_db.get_reader_size(test.reader.invariant_json)
+                size = self._jobs_db.get_reader_size(
+                    test.reader.invariant_json)
                 logger.info(size)
             total_test_size = sum(
                 [
@@ -292,6 +294,14 @@ class Runner:
             else self._remote_job_params.tf_1_queue_name,
         )
         logger.info("inference-{}-started".format(inference_request.hash))
+        add_event(
+            payload={
+                "event": "inference_job",
+                "hash": inference_request.hash
+            },
+            tags=['shift', 'inference_job', 'start',
+                  'scheduler']
+        )
         _logger.info(
             "Inference request %s - started on device %s",
             inference_request.id,
@@ -338,6 +348,13 @@ class Runner:
             queue=self._remote_job_params.general_queue_name,
         )
         logger.info("classifier-{}-started".format(classifier_request.hash))
+        add_event(
+            payload={
+                "event": "classifier_job",
+                "hash": classifier_request.hash
+            },
+            tags=['shift', 'inference_job', 'start', 'scheduler']
+        )
         _logger.info(
             "Classifier request %s - started on device %s",
             classifier_request.id,
@@ -491,16 +508,20 @@ class Runner:
                     )
 
                     # Start job and store currently running job
-                    classifier_job_info = self._start_classifier_job(cr, device_id)
+                    classifier_job_info = self._start_classifier_job(
+                        cr, device_id)
                     self._hash_to_classifier_job_info[cr.hash] = classifier_job_info
-                    self._status_map[cr.id] = StatusResponse(status=Status.FINISHED)
+                    self._status_map[cr.id] = StatusResponse(
+                        status=Status.FINISHED)
 
                 # 2. Same job already running - do not run the same job again, but only
                 # update the info, so that the updates of the equivalent job (same hash,
                 # different IDs) also apply for the current job
                 elif cr.hash in self._hash_to_classifier_job_info:
-                    self._hash_to_classifier_job_info[cr.hash].ids.append(cr.id)
-                    self._status_map[cr.id] = StatusResponse(status=Status.STARTED)
+                    self._hash_to_classifier_job_info[cr.hash].ids.append(
+                        cr.id)
+                    self._status_map[cr.id] = StatusResponse(
+                        status=Status.STARTED)
                     _logger.info(
                         "Classifier job %s - same job already running, updating info",
                         cr.id,
@@ -622,7 +643,13 @@ class Runner:
                     response_status = Status.FINISHED
                     logger.info("inference-{}-finished".format(hash_))
                     _logger.info("Inference job (hash=%s) - finished", hash_)
-
+                    add_event(
+                        payload={
+                            "event": "inference_job",
+                            "hash": hash_
+                        },
+                        tags=['shift', 'inference_job', 'end', 'scheduler']
+                    )
                 self._device_manager.release_device(info.device_id)
                 _logger.info("%s", str(self._device_manager))
                 to_delete.append(hash_)
@@ -676,8 +703,15 @@ class Runner:
                 elif status.state == states.SUCCESS:
                     logger.info("classifier-{}-finished".format(hash_))
                     _logger.info("Classifier job (hash=%s) - finished", hash_)
-
+                    add_event(
+                        payload={
+                            "event": "classifier_job",
+                            "hash": hash_
+                        },
+                        tags=['shift', 'classifier_job', 'end', 'scheduler']
+                    )
                     # TODO: NN - change logic for storing partial results
+
                     def save_nn_result(h: Hash, nnr: NearestNeighborResult):
                         self._successful_cr_hashes_to_errors[h] = nnr.error
                         self._jobs_db.store_nearest_neighbor_job(h, nnr)
@@ -694,7 +728,8 @@ class Runner:
 
                     # check if it is linear or nn classifier
                     if info.request.classifier.name == Classifier.LINEAR:
-                        linear_result = LinearResult.parse_raw(status.result[hash_])
+                        linear_result = LinearResult.parse_raw(
+                            status.result[hash_])
                         save_linear_result(hash_, linear_result)
                         response_additional_info = linear_result.error
 

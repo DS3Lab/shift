@@ -39,7 +39,7 @@ def composeResult(
     classifier = request.classifier
     
     test_sizes = [
-        get_reader_size(reader.reader.invariant_json) for reader in test_readers
+        jobs_db.get_reader_size(reader.reader.invariant_json) for reader in test_readers
     ]
     final_results = []
     sizes = [
@@ -65,6 +65,7 @@ def composeResult(
         """
         sliced_test_readers = []
         for id_tr, test_reader in enumerate(test_readers):
+            logger.info(f"test_sizes: {test_sizes}")
             test_size = int(test_sizes[id_tr])
             if (
                 test_size > int(os.environ["SHIFT_SPLIT_SIZE_THRESHOLD"])
@@ -93,6 +94,7 @@ def composeResult(
         largest_training_result = None
         final_readers = None
         for pull in range(len(pulls)):
+            logger.info("Sizes: {}".format(sizes))
             readers = slice_readers(sizes, train_readers, chunk_size, current_index, needed_num_pulls=pulls[:pull+2])
             logger.info("readers: {}".format(readers))
             result = jobs_db.get_known_result_by_params(

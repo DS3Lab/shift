@@ -6,8 +6,8 @@ from schemas._base import _DefaultConfig
 
 
 class GradientDescentSettings(BaseModel):
-    learning_rate: float = 0.01
-    num_epochs: int = 2000
+    learning_rate: float = 0.1
+    num_epochs: int = 100
 
     def __hash__(self):
         return hash((type(self),) + tuple(self.__dict__.values()))

@@ -10,9 +10,10 @@ from schemas.requests.common import Task2VecRequest
 from schemas.requests.finetune import FinetuneRequest
 from schemas.response import LinearResult
 import timeit
-from common.telemetry.telemetry import add_event
+from dstool.database import add_event
 
 _logger = get_task_logger(__name__)
+
 
 @celery_app.task(bind=True)
 def run_inference(task: Task, inference_request_json: str, device_id: Optional[str]):
@@ -28,12 +29,16 @@ def run_inference(task: Task, inference_request_json: str, device_id: Optional[s
         from pipeline import Device
         from pipeline.request import InferenceRunner
         from schemas.requests.common import InferenceRequest
+        # https://pytorch.org/docs/stable/notes/multiprocessing.html#cuda-in-multiprocessing
+        # import multiprocessing
+        # multiprocessing.set_start_method(method="spawn", force=True)
 
         inference_runner = InferenceRunner(
             reader_factory=AllReaderFactory(), model_factory=AllModelFactory()
         )
         inference_runner(
-            inference_request=InferenceRequest.parse_raw(inference_request_json),
+            inference_request=InferenceRequest.parse_raw(
+                inference_request_json),
             device=Device.GPU if device_id is not None else Device.CPU,
             celery_task=task,
         )
@@ -58,8 +63,12 @@ def run_classifier(
         from pipeline import Device
         from schemas.requests.common import ClassifierRequest
         from schemas.response import NearestNeighborResult
-        start = timeit.default_timer()
         request = ClassifierRequest.parse_raw(classifier_request_json)
+        ts = add_event(payload={
+            'classifier': request.classifier.name,
+            'device': "GPU" if device_id is not None else "CPU",
+            'hash': request.hash
+        }, tags=['shift','classifier', 'start'])
         if request.classifier.name in [Classifier.COSINE_NN, Classifier.EUCLIDEAN_NN]:
             result = nearest_neighbors(
                 request=request,
@@ -77,16 +86,11 @@ def run_classifier(
                 device=Device.GPU if device_id is not None else Device.CPU,
                 settings=request.classifier.parameters,
             )
-        stop = timeit.default_timer()
-        # add_event(
-        #     'classifier',
-        #     {
-        #         'classifier': request.classifier.name,
-        #         'device': "GPU" if device_id is not None else "CPU",
-        #         'hash': request.hash
-        #     },
-        #     round(1000 * (stop - start))
-        # )
+        add_event(payload={
+            'classifier': request.classifier.name,
+            'device': "GPU" if device_id is not None else "CPU",
+            'hash': request.hash
+        }, tags=['shift','classifier', 'end'], previous_timestamp=ts)
         return {key: result[key].json() for key in result}
 
     except Exception as e:
@@ -143,7 +147,8 @@ def run_finetune(task: Task, finetune_request_json: str, device_id: Optional[str
             model_factory=AllModelFactory(),
             settings=settings,
         )
-        finetuner(FinetuneRequest.parse_raw(finetune_request_json), device_id, task)
+        finetuner(FinetuneRequest.parse_raw(
+            finetune_request_json), device_id, task)
     except Exception as e:
         _logger.exception(str(e))
         raise RuntimeError

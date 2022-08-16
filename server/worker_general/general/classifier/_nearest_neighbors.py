@@ -13,7 +13,7 @@ from schemas import Hash
 from schemas.classifier import Classifier
 from schemas.requests.common import Change, ClassifierRequest, MutableData
 from schemas.response import NearestNeighborResult
-from common.telemetry.telemetry import add_event
+from common.telemetry.telemetry import push_event
 
 
 class _FaissOutOfMemoryError(BaseException):
@@ -276,9 +276,7 @@ def _get_nn_result(
     # 1. Go through sequence
     for md_index, mutable_data in enumerate(train_mutable_data_sequence):
         # 1.1 Load data
-        start = timeit.default_timer()
         train_md_dict, train_md_length = io.read_mutable_data(mutable_data)
-        stop = timeit.default_timer()
         # add_event(
         #     'load_inference_result',
         #     {

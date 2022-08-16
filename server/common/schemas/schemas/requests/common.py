@@ -2,7 +2,7 @@ import itertools
 import math
 import os
 from collections import Counter
-from typing import Dict, List, Optional, Sequence, Tuple, Union
+from typing import Dict, List, Literal, Optional, Sequence, Tuple, Union
 
 from db_tools.query import get_reader_size
 from loguru import logger
@@ -569,12 +569,12 @@ class Request(BaseModel):
         title="Benchmark",
         description="Specify if the request is a benchmark request - if so the server will not merge test dataset",
     )
-    chunk_size: Optional[int] = Field(
+    chunk_size: Optional[Union[int, Literal['AUTO']]] = Field(
         None,
         title="Chunk Size for Hyperband Optimization",
         description="Chunk size for Hyperband optimization",
     )
-    budget: Optional[int] = Field(
+    budget: Optional[Union[int, Literal['AUTO']]] = Field(
         None,
         title="Budget for Hyperband Optimization",
         description="Budget for Hyperband optimization",
@@ -885,7 +885,6 @@ def slice_readers(
     changes: List[Change] = [],
 ) -> List[MutableReader]:
     """
-    Now we don't split the readers into smaller, equal-size chunks, but we determine the start and end of the reader.
     Several notes:
     1. start -> current_index
     2. end -> current_index + chunk_size * needed_num_pulls
@@ -908,10 +907,11 @@ def slice_readers(
     > In future, maybe we can set the increment as an exponent of 2, and persist it in the database?
     > Maybe we can let user define the increments?
     """
-    increments = [chunk_size]
+    increments = []
     base_size = sizes[0]
     for size in sizes:
         increments.append(math.ceil((size * chunk_size) / base_size))
+    logger.info(f"Increments: {increments}")
     sliced_readers = []
     needed_num_pulls = list(itertools.accumulate(needed_num_pulls))
     for id_reader, reader in enumerate(readers):
