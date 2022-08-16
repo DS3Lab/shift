@@ -4,3 +4,4 @@ parsetab.py
 test_shqls/
 snoopy_experiments/
 raw_results/*.json
+raw_results/

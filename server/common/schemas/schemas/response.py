@@ -10,7 +10,7 @@ from schemas.models import (
 from schemas.requests.common import ClassifierRequest, InferenceRequest
 from schemas.requests.reader import AllReaderConfigsU
 from schemas.task.result import KnownResult
-
+from dstool.database import add_event
 from ._base import ID, Hash, Status, _DefaultConfig
 
 

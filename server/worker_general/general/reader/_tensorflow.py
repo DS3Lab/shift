@@ -174,12 +174,10 @@ class TFReader(Reader):
         self._num_classes = info.features[config.label_feature_path[0]].num_classes
 
         # Shuffle dataset, never
-        """
         data = data.shuffle(
             buffer_size=100000,
             reshuffle_each_iteration=False,
         )
-        """
 
         # Determine batch size
         if batch_size is not None:

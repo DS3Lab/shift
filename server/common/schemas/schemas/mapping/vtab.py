@@ -224,7 +224,7 @@ class _VTABMapping:
             return _VTABSpecs(
                 name="cifar100:3.0.2",
                 splits=_SplitsCalculator.train_test(
-                    train_size=50_000, train_percent=100
+                    train_size=50_000, train_percent=90
                 ),
             )
 
