@@ -12,6 +12,7 @@ Getting Started
 
     overview.md
     tutorial.rst
+    guidelines.md
 
 Extending SHiFT
 ----------------

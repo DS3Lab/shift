@@ -2,6 +2,8 @@
 
 This repository contains the artifacts (code and supplementary material) for the submission ``SHiFT: An Efficient, Flexible Search Engine for Transfer Learning''. The additional details for replicating the results can be accessed via https://github.com/DS3Lab/shift/blob/main/shift_supplementary.pdf.
 
+Visit the [docs](https://docs.shift.ml) for more details!
+
 ## Overview
 
 In a transfer learning scenario, an important task for data scientists is to find the best model for a new dataset. Users will have to train, evaluate and tune tons of models to pick the best one, which can be tedious, time-consuming and a waste of resources. To tackle this problem, we proposed SHiFT, with an envision for helping search machine learning models. With SHiFT, users are enabled to type in a structured query along with the dataset and a pool of models, and SHiFT returns the top-ranked models that match the query.
@@ -14,7 +16,7 @@ We apply several optimisations to SHiFT, including proxy classifiers, successive
 
 SHiFT consists of the following main components:
 
-* **SHiFT-QL**: SHiFT-QL is a query language specifically designed for searching machine learning models. Under `shiftql/repl`, we provide a REPL (Read Eval Print Loop) for SHiFT-QL. Users can type in a query and get the results. An example of SHiFT-QL is shown below:
+* **SHiFT-QL**: SHiFT-QL is a query language specifically designed for searching machine learning models. Under `client/shiftql/repl`, we provide a REPL (Read Eval Print Loop) for SHiFT-QL. Users can type in a query and get the results. An example of SHiFT-QL is shown below:
 
 ``` sql
 SELECT * FROM Models
@@ -22,21 +24,23 @@ WHERE NumParams < 10M AND Input == 'Vision'
 ORDER BY UpstreamAccuracy DESC LIMIT 1
 ```
 
-* **Scheduler**: It manages the scheduling of the computing devices (including both GPUs and CPUs). Whenever a new request comes to the system, the scheduler checks whether there is a free device available. If there is, the scheduler asks the **worker** to execute this request on the free device. The source code for scheduler is under `scheduler/`.
+* **Scheduler**: It manages the scheduling of the computing devices (including both GPUs and CPUs). Whenever a new request comes to the system, the scheduler checks whether there is a free device available. If there is, the scheduler asks the **worker** to execute this request on the free device. The source code for scheduler is under `server/scheduler/`.
 
-*  **Worker**: It executes the task on a given device. The source code for worker is under `worker_general`. Our worker supports four types of tasks:
+*  **Worker**: It executes the task on a given device. The source code for worker is under `server/worker_general`. Our worker supports four types of tasks:
 	* *Inference Task*: An inference task is a task that is used to infer the output of a model. The input to the inference task is a single data point, and the inference task outputs the feature vector of the data point.
 	* *Classification Task*: A classification task is a task that is used to classify the input data, based on the feature vector calculated by the inference task.
 	* *Task2Vec Task*: A task2vec task is a task to transform the entire dataset into a single vector.
 	* *Fine-tune Task*: A fine-tune task is a task that is used to fine-tune the model on the entire dataset. 
 
-* **RESTful API**: SHiFT is organised in a client-server structure. The RESTful provides access to all functionalities of SHiFT, including querying models, checking job status, and so on. The source code for RESTful API is under `rest/`.
+* **RESTful API**: SHiFT is organised in a client-server structure. The RESTful provides access to all functionalities of SHiFT, including querying models, checking job status, and so on. The source code for RESTful API is under `server/rest/`.
 
-* **Task Queues**: The scheduler and worker form a producer/consumer model: the scheduler produces the tasks and the worker consumes the tasks. These two components communicated with each other by a task queue. The source code for the task queue is under `common/db_tools/queues`.
+* **Task Queues**: The scheduler and worker form a producer/consumer model: the scheduler produces the tasks and the worker consumes the tasks. These two components communicated with each other by a task queue. The source code for the task queue is under `server/common/db_tools/queues`.
 
-* **Database Utilities**: All operations related to database accesses are under `common/db_tools/`.
+* **Database Utilities**: All operations related to database accesses are under `server/common/db_tools/`.
 
-* **Successive Halving Simulator**: We have implemented a simulator for running successive halving with some parameters, including the chunk size, budget, cost of models, etc. The simulator can be found at `simulator/`.
+* **Successive Halving Simulator**: We have implemented a simulator for running successive halving with some parameters, including the chunk size, budget, cost of models, etc. The simulator can be found at `client/simulator/`.
+
+* **Fine-tune Accuracies for Benchmark Module**: We provide the fine-tune accuracies on VTAB tasks and HuggingFace transformers, which can be found [here](https://github.com/DS3Lab/shift/tree/main/data).
 
 ## How a SHiFT-QL Statement is Processed
 
